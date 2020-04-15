@@ -1,0 +1,37 @@
+/*  */
+.aa-body-main {
+    margin: 0px;
+    background-color: #242424;
+    color: #b8b8bb;
+}
+
+/*  */
+.aa-header {
+    text-align: center;
+    background-color: #504761;
+    color: #b8b8bb;
+    margin: 0px;
+}
+
+/* */
+.aa-refname {
+    margin-top: 0px;
+    padding-top: 8px;
+}
+
+/*  */
+.aa-hbutton {
+    width: 110px;
+    height: 24px;
+    border: none;
+    background-color: #707075;
+    color: #b8b8bb;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 8px;
+}
+
+/* */
+.aa-content-body {
+    text-align: center;
+}
