@@ -26,3 +26,31 @@ function setup_collapse() {
     }
 
 }
+
+function clear_and_set(htmlnode, from) {
+
+    // The content node we'll be clearing
+    var content_node = document.getElementById(htmlnode);
+
+    // clean it
+    content_node.innerHTML = "";
+
+    // Create Http request
+    var xmlHttp = new XMLHttpRequest();
+
+    // Set content
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            content_node.innerHTML = xmlHttp.responseText;
+            console.log(new Date().getTime() - start);
+        }
+    };
+
+    // Log load time (Why though...?)
+    start = new Date().getTime();
+
+    // Execute
+    xmlHttp.open("GET", from, true); // true for asynchronous
+    xmlHttp.send(null);
+
+}
