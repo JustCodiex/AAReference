@@ -44,3 +44,20 @@
     width: stretch;
     height: stretch;
 }
+
+/* */
+.aa-content-flow {
+    margin: auto;
+    max-width: 700px;
+}
+
+/* */
+.aa-content-article {
+    text-align: left;
+}
+
+/*  */
+.aa-content-header {
+    margin-top: 32px;
+    margin-bottom: 2px;
+}
