@@ -35,3 +35,12 @@
 .aa-content-body {
     text-align: center;
 }
+
+/* */
+#aa-content-frame {
+    border: none;
+    padding: none;
+    margin: none;
+    width: stretch;
+    height: stretch;
+}
