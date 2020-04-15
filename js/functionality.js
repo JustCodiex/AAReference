@@ -42,12 +42,10 @@ function clear_and_set(htmlnode, from) {
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             content_node.innerHTML = xmlHttp.responseText;
-            console.log(new Date().getTime() - start);
+        } else{
+            content_node.innerHTML = "Unable to load file.";
         }
     };
-
-    // Log load time (Why though...?)
-    start = new Date().getTime();
 
     // Execute
     xmlHttp.open("GET", from, true); // true for asynchronous
