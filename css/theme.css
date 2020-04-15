@@ -1,6 +1,8 @@
 /*  */
 .aa-body-main {
+    position: fixed;
     margin: 0px;
+    width: 100%;
     background-color: #242424;
     color: #b8b8bb;
 }
@@ -31,24 +33,40 @@
     margin-bottom: 8px;
 }
 
+/* Collapse button */
+.aa-collapse-button {
+    width: 180px;
+    height: 24px;
+    border: none;
+    background-color: #707075;
+    color: #b8b8bb;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 8px;
+}
+
+.aa-collapse-button:hover {
+    background-color: #7f63a5;
+}
+
+/* */
+.aa-collapse-content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
 /* */
 .aa-content-body {
     text-align: center;
 }
 
 /* */
-#aa-content-frame {
-    border: none;
-    padding: none;
-    margin: none;
-    width: stretch;
-    height: stretch;
-}
-
-/* */
 .aa-content-flow {
     margin: auto;
-    max-width: 700px;
+    max-width: 50%;
 }
 
 /* */
@@ -60,4 +78,16 @@
 .aa-content-header {
     margin-top: 32px;
     margin-bottom: 2px;
+}
+
+/* */
+.aa-sidebar {
+    width: 256px;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-color: #707075;
+    overflow-x: hidden;
+    padding-top: 6px;
+    margin-top: 40px;
 }
