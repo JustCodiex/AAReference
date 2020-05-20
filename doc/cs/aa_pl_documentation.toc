@@ -1,5 +1,23 @@
 \contentsline {section}{Abstract}{1}{section*.1}%
-\contentsline {section}{Parsing}{2}{section*.2}%
-\contentsline {section}{Type System}{3}{section*.3}%
-\contentsline {section}{Virtual Machine}{4}{section*.4}%
-\contentsline {section}{Compiler}{5}{section*.5}%
+\contentsline {section}{Using the Virtual Machine}{2}{section*.2}%
+\contentsline {section}{Parsing}{3}{section*.3}%
+\contentsline {subsection}{Lexical Analysis}{3}{section*.4}%
+\contentsline {subsection}{Parse tree (PT)}{3}{section*.5}%
+\contentsline {subsection}{Abstract Syntax Tree (AST)}{3}{section*.6}%
+\contentsline {subsection}{Simplifying the AST}{3}{section*.7}%
+\contentsline {section}{Static Analysis}{4}{section*.8}%
+\contentsline {subsection}{Type declarations}{4}{section*.9}%
+\contentsline {subsection}{Function Matching}{4}{section*.10}%
+\contentsline {subsection}{Building Inheritance Trees}{4}{section*.11}%
+\contentsline {subsection}{Control path verification}{4}{section*.12}%
+\contentsline {section}{Type System}{5}{section*.13}%
+\contentsline {subsection}{Static Type Environment}{5}{section*.14}%
+\contentsline {subsection}{Dynamic Type Environment}{5}{section*.15}%
+\contentsline {subsection}{Typechecking}{5}{section*.16}%
+\contentsline {section}{Internals of the Virtual Machine}{6}{section*.17}%
+\contentsline {section}{Structure of an Å-binary file}{7}{section*.18}%
+\contentsline {section}{Compiler}{8}{section*.19}%
+\contentsline {subsection}{Compiling the AST}{8}{section*.20}%
+\contentsline {subsection}{Verifying Å Bytecode}{8}{section*.21}%
+\contentsline {section}{Overview over compile errors}{9}{section*.22}%
+\contentsline {section}{Å Bytecode Instruction List}{10}{section*.23}%
