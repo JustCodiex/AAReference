@@ -16,23 +16,48 @@
                 <button class="aa-hbutton" onclick="window.open('https://justcodiex.github.io/AAReference/about.html', '_self')">About</button>
             </div>
         </div>
-        <div class="aa-content-body">
-            <div class="aa-sidebar">
-                <button class="aa-collapse-button">Official Dcoumentation</button>
-                <div class="aa-collapse-content">
-                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_1_1.html')">Introdution</button>
-                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/cs/languagespecification.html')">Specification</button>
-                </div>
-                <button class="aa-collapse-button">Language Reference</button>
-                <div class="aa-collapse-content">
-                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_2_1.html')">Nothing to see here</button>
-                </div>
-                <button class="aa-collapse-button">Standard Library</button>
-                <div class="aa-collapse-content">
-                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_2_1.html')">I/O library</button>
-                </div>
+        <div class="aa-content-body-container">
+            <div class="aa-content-body-doc-nav">
+                <h1 id="aa-doc-navbar"></h1>
             </div>
-            <div class="aa-content-flow" id="aa-content-field" onload="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_1_1.html')">
+            <div class="aa-content-body">
+                <div class="aa-sidebar">
+                    <button class="aa-collapse-button">Official Dcoumentation</button>
+                    <div class="aa-collapse-content">
+                        <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_1_1.html')">Introdution</button>
+                        <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/cs/languagespecification.html')">Specification</button>
+                    </div>
+                    <button class="aa-collapse-button">Language Reference</button>
+                    <div class="aa-collapse-content">
+                        <button class="aa-collapse-button">Data Types</button>
+                        <div class="aa-collapse-content">
+                            <button class="aa-collapse-subbutton" onclick="documentation_navigate('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_2_1.html', 'aa-doc-navbar', 'Language Reference/Data Types/Tuples')">
+                                Primitives
+                            </button>
+                            <button class="aa-collapse-subbutton" onclick="documentation_navigate('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_2_1.html', 'aa-doc-navbar', 'Language Reference/Data Types/Tuples')">
+                                Tuples
+                            </button>
+                        </div>
+                        <button class="aa-collapse-button">Classes</button>
+                        <div class="aa-collapse-content">
+                            <button class="aa-collapse-subbutton" onclick="documentation_navigate('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_2_1.html', 'aa-doc-navbar', 'Language Reference/Data Types/Tuples')">
+                                Class
+                            </button>
+                            <button class="aa-collapse-subbutton" onclick="documentation_navigate('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_2_1.html', 'aa-doc-navbar', 'Language Reference/Data Types/Tuples')">
+                                Abstract Classes
+                            </button>
+                            <button class="aa-collapse-subbutton" onclick="documentation_navigate('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_2_1.html', 'aa-doc-navbar', 'Language Reference/Data Types/Tuples')">
+                                Tagged Classes
+                            </button>
+                        </div>
+                    </div>
+                    <button class="aa-collapse-button">Standard Library</button>
+                    <div class="aa-collapse-content">
+                        <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_2_1.html')">I/O library</button>
+                    </div>
+                </div>
+                <div class="aa-content-flow" id="aa-content-field" onload="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/doc/aa_1_1.html')">
+                </div>
             </div>
         </div>
         <div class="aa-footer">

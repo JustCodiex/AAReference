@@ -56,7 +56,6 @@
     background-color: #707075;
     color: #b8b8bb;
     margin-bottom: 8px;
-    margin-left: 24px;
     text-align: left;
 }
 
@@ -67,6 +66,7 @@
 /* */
 .aa-collapse-content {
     padding: 0 18px;
+    margin-left: 24px;
     background-color: #707075;
     max-height: 0;
     transition: max-height 0.2s ease-out;

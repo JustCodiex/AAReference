@@ -12,9 +12,16 @@ function setup_collapse() {
     // Fetch all collapse buttons
     var collapse_buttons = document.getElementsByClassName("aa-collapse-button");
 
+    // Setup collapse collections
+    setup_collapse_collection(collapse_buttons);
+
+}
+
+function setup_collapse_collection(buttons){
+
     // Loop through all the buttons
-    for (var i = 0; i < collapse_buttons.length; i++) {
-        collapse_buttons[i].addEventListener("click", function() {
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function() {
           this.classList.toggle("active");
           var content = this.nextElementSibling;
           if (content.style.maxHeight){
@@ -51,4 +58,13 @@ function clear_and_set(htmlnode, from) {
     xmlHttp.open("GET", from, true); // true for asynchronous
     xmlHttp.send(null);
 
+}
+
+function update_navbar(navbartextid, target) {
+    document.getElementById(navbartextid).innerHTML = target;
+}
+
+function documentation_navigate(htmlnode, from, bartextid, target) {
+    clear_and_set(htmlnode, from);
+    update_navbar(bartextid, target);
 }
