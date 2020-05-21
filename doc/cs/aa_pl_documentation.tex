@@ -148,27 +148,80 @@ The following pages are the appendices of this specification and contain full ov
 \newsubsection{Appendix 1: Complete Overview of Grammar}
 \newcommand{\gtext}[1]{<$#1$>}
 \newcommand{\glit}[1]{\texttt{#1}}
+The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\url{https://en.wikipedia.org/wiki/Kleene_star}} and '$^+$' (Kleene Plus).
 \begin{grammar}
-	\gtext{Expr} := ($Expr$)
+	\gtext{Statement} ::= $Expr$\glit{;}
+	\alt $Id$ \glit{=} $Expr$\glit{;} % assignment!	
+	
+	\gtext{Expr} := \glit{(}$Expr$\glit{)}
 	\alt $Expr$ $BinaryOp$ $Expr$
 	\alt $PreUnaryOp$ $Expr$
 	\alt $Expr$ $PostUnaryOp$
+	\alt $IntLit$
+	\alt $FloatLit$
+	\alt $DoubleLit$
+	\alt $BoolLit$
+	\alt $NullLit$
+	\alt $StringLit$
+	\alt $CharLit$
+	\alt $Id$
 	
-	\gtext{BinaryOp} ::= $+$ | $-$ | $*$ | $/$ | $\%$ | $<$ | $>$ | $<=$ | $>=$ | $==$ | $!=$ | $+=$ | $-=$ | $\mid \mid$ | $\& \&$ | $\mid$ | $\&$
+	\gtext{Decl} ::= \glit{var} $Id$ $=$ $Expr$\glit{;}
+	\alt \glit{const} \glit{var} $Id$ $=$ $Expr$\glit{;}
+	\alt $TypeId$ $Id$ $=$ $Expr$\glit{;}
+	\alt \glit{class} $Id$ \{ $Decl^*$ \}
+	\alt \glit{class} $Id$\glit{()} \{ $Decl^*$ \}
+	\alt \glit{class} $Id$\glit{(}$Param$\glit{)} \{ $Decl^*$ \}
+	\alt $TypeID$ $Id$\glit{()} \{ $Statement^*$ \}
+	\alt \glit{void} $Id$\glit{()} \{ $Statement^*$ \}
+	\alt $TypeID$ $Id$\glit{(}$Param$\glit{)} \{ $Statement^*$ \}
+	\alt \glit{void} $Id$\glit{(}$Param$\glit{)} \{ $Statement^*$ \}
 	
-	\gtext{PreUnaryOp} ::= $-$ | $!$ | $\#$
+	\gtext{Param} ::= $TypeID$ $Id$ | $Param$\glit{,} $Param$
 	
-	\gtext{PostUnaryOp} ::= $++$ | $--$
+	\gtext{BinaryOp} ::= \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\textless} | \glit{\textgreater} | \glit{\textless}= | \glit{\textgreater}= | \glit{==} | \glit{!=} | \glit{+=} | \glit{-=} | \glit{\textbar\textbar} 
+	\alt $\&\&$ | \glit{\textbar} | $\&$ | \glit{\textless\textless} | \glit{\textgreater\textgreater}
 	
-	\gtext{Statement} ::= $Expr$ = $Expr$
+	\gtext{PreUnaryOp} ::= \glit{-} | \glit{!} | \glit{\#}
 	
-	\gtext{Decl} ::= \glit{var} $Id$ $=$ $Expr$
-	\alt \glit{const} \glit{var} $Id$ $=$ $Expr$
-	\alt $TypeId$ $Id$ $=$ $Expr$
-	\alt \glit{class} $Id$ \{ $Decl$ \}
-	\alt $\epsilon$
-\end{grammar}
+	\gtext{PostUnaryOp} ::= \glit{++} | \glit{--}
 
+	\gtext{Digit} ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+	\gtext{IntLit} ::= $Digit^+$
+	
+	\gtext{FloatLit} ::= $Digit^+$\glit{.}$Digit^+$\glit{f}
+	
+	\gtext{DoubleLit} ::= $Digit^+$\glit{.}$Digit^+$
+	
+\end{grammar}
+\newpage
+\begin{grammar}
+	\gtext{BoolLit} ::= \glit{true} | \glit{false}	
+	
+	\gtext{NullLit} ::= \glit{null}
+	
+	\gtext{Letter} ::=  A | B | C | D | E | F | G
+       | H | I | J | K | L | M | N
+       \alt O | P | Q | R | S | T | U
+       | V | W | X | Y | Z | Å 
+       \alt a | b | c | d | e | f | g 
+       | h | i | j | k | l | m | n 
+       \alt o | p | q | r | s | t | u 
+       | v | w | x | y | z | å
+       
+    \gtext{Id} ::= $Letter^+Digit^*Letter^*$ | \glit{_}$Id$
+     
+    \gtext{Character} ::= $Letter$ | $Digit$ |   | \glit{_} | \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\#} | \glit{\textless} | \glit{\textgreater} | \glit{=} | \glit{\textbar} | \glit{\&} | \glit{\$} | \glit{€} | \glit{@} | \glit{£} | \glit{!}
+    \alt \glit{?} | \glit{:} | \glit{;} | \glit{,} | \glit{.} | \glit{\^} | \glit{¨} | \glit{\~} | \glit{(} | \glit{)} | \glit{\{} | \glit{\}} | \glit{[} | \glit{]} | \glit{§}
+       
+	\gtext{StringLit} ::= \glit{\"}$Character^*$\glit{\"}
+	
+	\gtext{CharLit} ::= \glit{'}$Character$\glit{'}
+	
+	\gtext{TypeID} ::= \glit{string} | \glit{bool} | \glit{int} | \glit{float} | \glit{char} | \glit{Any} | $Id$
+	
+\end{grammar}
 \newpage
 \newsubsection{Appendix 2: Complete Overview of Operational Semantics}
 ...

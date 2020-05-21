@@ -25,7 +25,7 @@
 \contentsline {subsection}{Verifying Å Bytecode}{8}{section*.25}%
 \contentsline {section}{Appendix}{9}{section*.26}%
 \contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{9}{section*.27}%
-\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{10}{section*.28}%
-\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{11}{figure.caption.30}%
-\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{12}{section*.31}%
-\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{13}{section*.32}%
+\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{11}{section*.28}%
+\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{12}{figure.caption.30}%
+\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{13}{section*.31}%
+\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{14}{section*.32}%
