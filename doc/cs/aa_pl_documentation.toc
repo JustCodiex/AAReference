@@ -15,9 +15,17 @@
 \contentsline {subsection}{Dynamic Type Environment}{5}{section*.15}%
 \contentsline {subsection}{Typechecking}{5}{section*.16}%
 \contentsline {section}{Internals of the Virtual Machine}{6}{section*.17}%
-\contentsline {section}{Structure of an Å-binary file}{7}{section*.18}%
-\contentsline {section}{Compiler}{8}{section*.19}%
-\contentsline {subsection}{Compiling the AST}{8}{section*.20}%
-\contentsline {subsection}{Verifying Å Bytecode}{8}{section*.21}%
-\contentsline {section}{Overview over compile errors}{9}{section*.22}%
-\contentsline {section}{Å Bytecode Instruction List}{10}{section*.23}%
+\contentsline {subsection}{Executing bytecode}{6}{section*.18}%
+\contentsline {subsection}{The operand and call stacks}{6}{section*.19}%
+\contentsline {subsection}{The Ref Value Environment}{6}{section*.20}%
+\contentsline {subsection}{The Garbage Collector}{6}{section*.21}%
+\contentsline {section}{Structure of an Å-binary file}{7}{section*.22}%
+\contentsline {section}{Compiler}{8}{section*.23}%
+\contentsline {subsection}{Compiling the AST}{8}{section*.24}%
+\contentsline {subsection}{Verifying Å Bytecode}{8}{section*.25}%
+\contentsline {section}{Appendix}{9}{section*.26}%
+\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{9}{section*.27}%
+\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{10}{section*.28}%
+\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{11}{figure.caption.30}%
+\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{12}{section*.31}%
+\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{13}{section*.32}%

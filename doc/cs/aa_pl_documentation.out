@@ -15,9 +15,17 @@
 \BOOKMARK [2][-]{section*.15}{Dynamic Type Environment}{section*.13}% 15
 \BOOKMARK [2][-]{section*.16}{Typechecking}{section*.13}% 16
 \BOOKMARK [1][-]{section*.17}{Internals of the Virtual Machine}{}% 17
-\BOOKMARK [1][-]{section*.18}{Structure of an \305-binary file}{}% 18
-\BOOKMARK [1][-]{section*.19}{Compiler}{}% 19
-\BOOKMARK [2][-]{section*.20}{Compiling the AST}{section*.19}% 20
-\BOOKMARK [2][-]{section*.21}{Verifying \305 Bytecode}{section*.19}% 21
-\BOOKMARK [1][-]{section*.22}{Overview over compile errors}{}% 22
-\BOOKMARK [1][-]{section*.23}{\305 Bytecode Instruction List}{}% 23
+\BOOKMARK [2][-]{section*.18}{Executing bytecode}{section*.17}% 18
+\BOOKMARK [2][-]{section*.19}{The operand and call stacks}{section*.17}% 19
+\BOOKMARK [2][-]{section*.20}{The Ref Value Environment}{section*.17}% 20
+\BOOKMARK [2][-]{section*.21}{The Garbage Collector}{section*.17}% 21
+\BOOKMARK [1][-]{section*.22}{Structure of an \305-binary file}{}% 22
+\BOOKMARK [1][-]{section*.23}{Compiler}{}% 23
+\BOOKMARK [2][-]{section*.24}{Compiling the AST}{section*.23}% 24
+\BOOKMARK [2][-]{section*.25}{Verifying \305 Bytecode}{section*.23}% 25
+\BOOKMARK [1][-]{section*.26}{Appendix}{}% 26
+\BOOKMARK [2][-]{section*.27}{Appendix 1: Complete Overview of Grammar}{section*.26}% 27
+\BOOKMARK [2][-]{section*.28}{Appendix 2: Complete Overview of Operational Semantics}{section*.26}% 28
+\BOOKMARK [2][-]{figure.caption.30}{Appendix 3: Complete Overview of Typing Rules}{section*.26}% 29
+\BOOKMARK [2][-]{section*.31}{Appendix 4: Complete Overview of Compile Errors}{section*.26}% 30
+\BOOKMARK [2][-]{section*.32}{Appendix 5: Complete Overview of Instruction List}{section*.26}% 31

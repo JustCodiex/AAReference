@@ -19,6 +19,7 @@
 \usepackage{caption}
 \usepackage{logicproof}
 \usepackage{longtable}
+\usepackage{syntax}
 \usepackage[a4paper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
 
 %%% Hyperlink setup
@@ -26,9 +27,16 @@
 	linktoc = none
 }
 
+%%% Gramar environment
+\setlength{\grammarparsep}{6pt plus 1pt minus 1pt} % increase separation between rules
+\setlength{\grammarindent}{12em} % increase separation between LHS/RHS 
+\let\syntleft\relax
+\let\syntright\relax
+
 %%% Code environment
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{mathpartir}
 \definecolor{commentsColor}{rgb}{0.497495, 0.497587, 0.497464}
 \definecolor{keywordsColor}{rgb}{0.000000, 0.000000, 0.635294}
 \definecolor{stringColor}{rgb}{0.558215, 0.000000, 0.135316}
@@ -76,6 +84,8 @@
 \setcounter{page}{1}
 \newsection{Abstract}
 This document is the official document for the Å programming language. It shows how a program is parsed from source code into a binary format and then how the binary is executed. Thus this document will also contain the semantics of the language and an explanation for the default implementation of the language.  Besides explaining the semantics and syntax, this document will also explain how the source code is parsed. Additionally, how this parse result is operated on to convert it into a valid piece of Å code.
+\\\\
+Anything written or discussed within this document is only safely assumed to be applicable for Å version 1.0. Therefore, code and other semantics may be outdated or even too new (or features not implemented yet). This document should, therefore, only act as documentation or as guidance for the previously specified version of Å.
 \newpage
 \newsection{Using the Virtual Machine}
 The virtual machine is first and foremost a command-line tool. It can - on Windows 10 - be run as an executable, wherein it will expect some arguments be given to it. The arguments given to the application will then be used to determine what the application will actually do.
@@ -115,6 +125,13 @@ The machine is capable of compiling source code into Å byte code. This byte cod
 \newpage
 \newsection{Internals of the Virtual Machine}
 ...
+\newsubsection{Executing bytecode}
+...
+\newsubsection{The operand and call stacks}
+...
+\newsubsection{The Ref Value Environment}
+...
+\newsubsection{The Garbage Collector}
 \newpage
 \newsection{Structure of an Å-binary file}
 ...
@@ -126,9 +143,50 @@ The machine is capable of compiling source code into Å byte code. This byte cod
 \newsubsection{Verifying Å Bytecode}
 ...
 \newpage
-\newsection{Overview over compile errors}
+\newsection{Appendix}
+The following pages are the appendices of this specification and contain full overview over the grammar, semantics, type rules, compile errors, runtime errors, and instruction list.
+\newsubsection{Appendix 1: Complete Overview of Grammar}
+\newcommand{\gtext}[1]{<$#1$>}
+\newcommand{\glit}[1]{\texttt{#1}}
+\begin{grammar}
+	\gtext{Expr} := ($Expr$)
+	\alt $Expr$ $BinaryOp$ $Expr$
+	\alt $PreUnaryOp$ $Expr$
+	\alt $Expr$ $PostUnaryOp$
+	
+	\gtext{BinaryOp} ::= $+$ | $-$ | $*$ | $/$ | $\%$ | $<$ | $>$ | $<=$ | $>=$ | $==$ | $!=$ | $+=$ | $-=$ | $\mid \mid$ | $\& \&$ | $\mid$ | $\&$
+	
+	\gtext{PreUnaryOp} ::= $-$ | $!$ | $\#$
+	
+	\gtext{PostUnaryOp} ::= $++$ | $--$
+	
+	\gtext{Statement} ::= $Expr$ = $Expr$
+	
+	\gtext{Decl} ::= \glit{var} $Id$ $=$ $Expr$
+	\alt \glit{const} \glit{var} $Id$ $=$ $Expr$
+	\alt $TypeId$ $Id$ $=$ $Expr$
+	\alt \glit{class} $Id$ \{ $Decl$ \}
+	\alt $\epsilon$
+\end{grammar}
+
 \newpage
-\newsection{Å Bytecode Instruction List}
+\newsubsection{Appendix 2: Complete Overview of Operational Semantics}
+...
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}
+\newpage
+\newsubsection{Appendix 3: Complete Overview of Typing Rules}
+...
+\newpage
+\newsubsection{Appendix 4: Complete Overview of Compile Errors}
+\newpage
+\newsubsection{Appendix 5: Complete Overview of Instruction List}
 A complete and fully up to date list can be found \underline{\href{https://github.com/JustCodiex/AA/blob/master/AAByteCode.h}{here}}.
 \begin{longtable}{|l|c|c|c|c|c|c|c|}
 		\hline
