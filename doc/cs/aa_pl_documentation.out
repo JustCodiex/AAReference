@@ -1,31 +1,31 @@
 \BOOKMARK [1][-]{section*.1}{Abstract}{}% 1
 \BOOKMARK [1][-]{section*.2}{Using the Virtual Machine}{}% 2
-\BOOKMARK [1][-]{section*.3}{Parsing}{}% 3
-\BOOKMARK [2][-]{section*.4}{Lexical Analysis}{section*.3}% 4
-\BOOKMARK [2][-]{section*.5}{Parse tree \(PT\)}{section*.3}% 5
-\BOOKMARK [2][-]{section*.6}{Abstract Syntax Tree \(AST\)}{section*.3}% 6
-\BOOKMARK [2][-]{section*.7}{Simplifying the AST}{section*.3}% 7
-\BOOKMARK [1][-]{section*.8}{Static Analysis}{}% 8
-\BOOKMARK [2][-]{section*.9}{Type declarations}{section*.8}% 9
-\BOOKMARK [2][-]{section*.10}{Function Matching}{section*.8}% 10
-\BOOKMARK [2][-]{section*.11}{Building Inheritance Trees}{section*.8}% 11
-\BOOKMARK [2][-]{section*.12}{Control path verification}{section*.8}% 12
-\BOOKMARK [1][-]{section*.13}{Type System}{}% 13
-\BOOKMARK [2][-]{section*.14}{Static Type Environment}{section*.13}% 14
-\BOOKMARK [2][-]{section*.15}{Dynamic Type Environment}{section*.13}% 15
-\BOOKMARK [2][-]{section*.16}{Typechecking}{section*.13}% 16
-\BOOKMARK [1][-]{section*.17}{Internals of the Virtual Machine}{}% 17
-\BOOKMARK [2][-]{section*.18}{Executing bytecode}{section*.17}% 18
-\BOOKMARK [2][-]{section*.19}{The operand and call stacks}{section*.17}% 19
-\BOOKMARK [2][-]{section*.20}{The Ref Value Environment}{section*.17}% 20
-\BOOKMARK [2][-]{section*.21}{The Garbage Collector}{section*.17}% 21
-\BOOKMARK [1][-]{section*.22}{Structure of an \305-binary file}{}% 22
-\BOOKMARK [1][-]{section*.23}{Compiler}{}% 23
-\BOOKMARK [2][-]{section*.24}{Compiling the AST}{section*.23}% 24
-\BOOKMARK [2][-]{section*.25}{Verifying \305 Bytecode}{section*.23}% 25
-\BOOKMARK [1][-]{section*.26}{Appendix}{}% 26
-\BOOKMARK [2][-]{section*.27}{Appendix 1: Complete Overview of Grammar}{section*.26}% 27
-\BOOKMARK [2][-]{section*.28}{Appendix 2: Complete Overview of Operational Semantics}{section*.26}% 28
-\BOOKMARK [2][-]{figure.caption.30}{Appendix 3: Complete Overview of Typing Rules}{section*.26}% 29
-\BOOKMARK [2][-]{section*.31}{Appendix 4: Complete Overview of Compile Errors}{section*.26}% 30
-\BOOKMARK [2][-]{section*.32}{Appendix 5: Complete Overview of Instruction List}{section*.26}% 31
+\BOOKMARK [1][-]{lstnumber.-1.12}{Parsing}{}% 3
+\BOOKMARK [2][-]{section*.5}{Lexical Analysis}{lstnumber.-1.12}% 4
+\BOOKMARK [2][-]{section*.6}{Parse tree \(PT\)}{lstnumber.-1.12}% 5
+\BOOKMARK [2][-]{section*.7}{Abstract Syntax Tree \(AST\)}{lstnumber.-1.12}% 6
+\BOOKMARK [2][-]{section*.8}{Simplifying the AST}{lstnumber.-1.12}% 7
+\BOOKMARK [1][-]{section*.9}{Static Analysis}{}% 8
+\BOOKMARK [2][-]{section*.10}{Type declarations}{section*.9}% 9
+\BOOKMARK [2][-]{section*.11}{Function Matching}{section*.9}% 10
+\BOOKMARK [2][-]{section*.12}{Building Inheritance Trees}{section*.9}% 11
+\BOOKMARK [2][-]{section*.13}{Control path verification}{section*.9}% 12
+\BOOKMARK [1][-]{section*.14}{Type System}{}% 13
+\BOOKMARK [2][-]{section*.15}{Static Type Environment}{section*.14}% 14
+\BOOKMARK [2][-]{section*.16}{Dynamic Type Environment}{section*.14}% 15
+\BOOKMARK [2][-]{section*.17}{Typechecking}{section*.14}% 16
+\BOOKMARK [1][-]{section*.18}{Internals of the Virtual Machine}{}% 17
+\BOOKMARK [2][-]{section*.19}{Executing bytecode}{section*.18}% 18
+\BOOKMARK [2][-]{section*.20}{The operand and call stacks}{section*.18}% 19
+\BOOKMARK [2][-]{section*.21}{The Ref Value Environment}{section*.18}% 20
+\BOOKMARK [2][-]{section*.22}{The Garbage Collector}{section*.18}% 21
+\BOOKMARK [1][-]{section*.23}{Structure of an \305-binary file}{}% 22
+\BOOKMARK [1][-]{section*.24}{Compiler}{}% 23
+\BOOKMARK [2][-]{section*.25}{Compiling the AST}{section*.24}% 24
+\BOOKMARK [2][-]{section*.26}{Verifying \305 Bytecode}{section*.24}% 25
+\BOOKMARK [1][-]{section*.27}{Appendix}{}% 26
+\BOOKMARK [2][-]{section*.28}{Appendix 1: Complete Overview of Grammar}{section*.27}% 27
+\BOOKMARK [2][-]{section*.29}{Appendix 2: Complete Overview of Operational Semantics}{section*.27}% 28
+\BOOKMARK [2][-]{figure.caption.31}{Appendix 3: Complete Overview of Typing Rules}{section*.27}% 29
+\BOOKMARK [2][-]{section*.32}{Appendix 4: Complete Overview of Compile Errors}{section*.27}% 30
+\BOOKMARK [2][-]{section*.33}{Appendix 5: Complete Overview of Instruction List}{section*.27}% 31

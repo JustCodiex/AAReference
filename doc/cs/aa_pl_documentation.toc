@@ -1,31 +1,31 @@
 \contentsline {section}{Abstract}{1}{section*.1}%
 \contentsline {section}{Using the Virtual Machine}{2}{section*.2}%
-\contentsline {section}{Parsing}{3}{section*.3}%
-\contentsline {subsection}{Lexical Analysis}{3}{section*.4}%
-\contentsline {subsection}{Parse tree (PT)}{3}{section*.5}%
-\contentsline {subsection}{Abstract Syntax Tree (AST)}{3}{section*.6}%
-\contentsline {subsection}{Simplifying the AST}{3}{section*.7}%
-\contentsline {section}{Static Analysis}{4}{section*.8}%
-\contentsline {subsection}{Type declarations}{4}{section*.9}%
-\contentsline {subsection}{Function Matching}{4}{section*.10}%
-\contentsline {subsection}{Building Inheritance Trees}{4}{section*.11}%
-\contentsline {subsection}{Control path verification}{4}{section*.12}%
-\contentsline {section}{Type System}{5}{section*.13}%
-\contentsline {subsection}{Static Type Environment}{5}{section*.14}%
-\contentsline {subsection}{Dynamic Type Environment}{5}{section*.15}%
-\contentsline {subsection}{Typechecking}{5}{section*.16}%
-\contentsline {section}{Internals of the Virtual Machine}{6}{section*.17}%
-\contentsline {subsection}{Executing bytecode}{6}{section*.18}%
-\contentsline {subsection}{The operand and call stacks}{6}{section*.19}%
-\contentsline {subsection}{The Ref Value Environment}{6}{section*.20}%
-\contentsline {subsection}{The Garbage Collector}{6}{section*.21}%
-\contentsline {section}{Structure of an Å-binary file}{7}{section*.22}%
-\contentsline {section}{Compiler}{8}{section*.23}%
-\contentsline {subsection}{Compiling the AST}{8}{section*.24}%
-\contentsline {subsection}{Verifying Å Bytecode}{8}{section*.25}%
-\contentsline {section}{Appendix}{9}{section*.26}%
-\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{9}{section*.27}%
-\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{11}{section*.28}%
-\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{12}{figure.caption.30}%
-\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{13}{section*.31}%
-\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{14}{section*.32}%
+\contentsline {section}{Parsing}{3}{lstnumber.-1.12}%
+\contentsline {subsection}{Lexical Analysis}{3}{section*.5}%
+\contentsline {subsection}{Parse tree (PT)}{3}{section*.6}%
+\contentsline {subsection}{Abstract Syntax Tree (AST)}{3}{section*.7}%
+\contentsline {subsection}{Simplifying the AST}{3}{section*.8}%
+\contentsline {section}{Static Analysis}{4}{section*.9}%
+\contentsline {subsection}{Type declarations}{4}{section*.10}%
+\contentsline {subsection}{Function Matching}{4}{section*.11}%
+\contentsline {subsection}{Building Inheritance Trees}{4}{section*.12}%
+\contentsline {subsection}{Control path verification}{4}{section*.13}%
+\contentsline {section}{Type System}{5}{section*.14}%
+\contentsline {subsection}{Static Type Environment}{5}{section*.15}%
+\contentsline {subsection}{Dynamic Type Environment}{5}{section*.16}%
+\contentsline {subsection}{Typechecking}{5}{section*.17}%
+\contentsline {section}{Internals of the Virtual Machine}{6}{section*.18}%
+\contentsline {subsection}{Executing bytecode}{6}{section*.19}%
+\contentsline {subsection}{The operand and call stacks}{6}{section*.20}%
+\contentsline {subsection}{The Ref Value Environment}{6}{section*.21}%
+\contentsline {subsection}{The Garbage Collector}{6}{section*.22}%
+\contentsline {section}{Structure of an Å-binary file}{7}{section*.23}%
+\contentsline {section}{Compiler}{8}{section*.24}%
+\contentsline {subsection}{Compiling the AST}{8}{section*.25}%
+\contentsline {subsection}{Verifying Å Bytecode}{8}{section*.26}%
+\contentsline {section}{Appendix}{9}{section*.27}%
+\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{9}{section*.28}%
+\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{11}{section*.29}%
+\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{12}{figure.caption.31}%
+\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{13}{section*.32}%
+\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{14}{section*.33}%
