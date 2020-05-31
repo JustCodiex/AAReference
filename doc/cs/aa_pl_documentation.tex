@@ -27,7 +27,7 @@
 
 %%% Hyperlink setup
 \hypersetup {
-	linktoc = none
+	%linktoc = none
 }
 
 %%% Gramar environment
@@ -151,15 +151,32 @@ The parsing of Å source code is split into several different stages. The first 
 \\\\
 The first parsing error - syntax error - recorded will stop the parsing of the code and immediately report the syntax error to the console. A short explanation of what failed (for example what was expected and what was found) is reported alongside a position (line and column) in code. If possible, a specific syntax error code is also given, hopefully, making it easier to correct or lookup solutions.
 \newsubsection{Lexical Analysis}
-The lexical process is rather simple and is using a two-pass system. In the first pass, most if not all words and special characters are tokenized. Each found token saves the result in a data structure containing the associated text and the position in code. The token types are:
+The lexical process is rather simple and is using a two-pass system. In the first pass, most if not all words and special characters are tokenized. Each found token saves the result in a data structure containing the associated text and the position in code. The token types are shown in the table below\footnote{The $\epsilon$ character represents the whitespace character ' ' and $\Lambda$ represents the empty word - no character.}:
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|l|c|c|c|}
+	\begin{tabular}{|l|c|l|c|}
 	\hline
 	\# & Token & Description & Regular Expression \\ \hline
-	0 & invalid & Invalid Token & ' \\ \hline
-	1 & whitespace & Whitespace character & $|\Lambda$ \\ \hline
-	2 & identifier & Identifier - name or word & $(_|[a-Z])^+([0-9]|[a-Z])^*$ \\ \hline
+	0 & invalid & Invalid Token &  \\ \hline
+	1 & whitespace & Whitespace character & $\epsilon|\Lambda$ \\ \hline
+	2 & identifier & Identifier - name or word & $(\underscore|[a-Z])^+([0-9]|[a-Z]|\underscore)^*$ \\ \hline
+	3 & keyword & Word with specific meaning & $identifier \in \hyperref[sec:Keywords]{\textsf{keywordlist}}$ \\ \hline
+	4 & separator & Separating character & $;|,|(|)|\{|\}|[|]$ \\ \hline
+	5 & OP & Operator character & $+|-|*|/|\%|=|!|?|<|>|\&|||\$|\#|\textsuperscript{$\wedge$}$ \\ \hline
+	\end{tabular}
+\end{table}
+MORE TEXT HERE
+\newpage
+\newsubsubsection{Keywords}
+All identifiers found in the lexical analysis are matched against the keyword list found in the table below:
+\begin{table}[H]
+	\centering
+	\textit{keywordlist} \\
+	\label{sec:Keywords}
+	\begin{tabular}{|l|l|}
+	\hline
+	Keyword & Description \\ \hline
+	\texttt{var} & Declares a variable - the type is decided statically by the type-checker. \\ \hline
 	\end{tabular}
 \end{table}
 \newsubsection{Parse tree (PT)}
@@ -214,7 +231,7 @@ The following pages are the appendices of this specification and contain full ov
 \newsubsection{Appendix 1: Complete Overview of Grammar}
 \newcommand{\gtext}[1]{<$#1$>}
 \newcommand{\glit}[1]{\texttt{#1}}
-The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\url{https://en.wikipedia.org/wiki/Kleene_star}} and '$^+$' (Kleene Plus).
+The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\url{https://en.wikipedia.org/wiki/Kleene_star}} and '$^+$' (Kleene Plus). The $\epsilon$ character symbolises whitespace.
 \begin{grammar}
 	\gtext{Statement} ::= $Expr$\glit{;}
 	\alt $Id$ \glit{=} $Expr$\glit{;} % assignment!	
@@ -278,10 +295,10 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
        
     \gtext{Id} ::= $Letter^+Digit^*Letter^*$ | \glit{_}$Id$
      
-    \gtext{Character} ::= $Letter$ | $Digit$ |   | \glit{_} | \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\#} | \glit{\textless} | \glit{\textgreater} | \glit{=} | \glit{\textbar} | \glit{\&} | \glit{\$} | \glit{€} | \glit{@} | \glit{£} | \glit{!}
-    \alt \glit{?} | \glit{:} | \glit{;} | \glit{,} | \glit{.} | \glit{\^} | \glit{¨} | \glit{\~} | \glit{(} | \glit{)} | \glit{\{} | \glit{\}} | \glit{[} | \glit{]} | \glit{§}
+    \gtext{Character} ::= $Letter$ | $Digit$ | $\epsilon$ | \glit{_} | \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\#} | \glit{\textless} | \glit{\textgreater} | \glit{=} | \glit{\textbar} | \glit{\&} | \glit{\$} | \glit{€} | \glit{@} | \glit{£} | \glit{!}
+    \alt \glit{?} | \glit{:} | \glit{;} | \glit{,} | \glit{.} | \glit{\^} | \glit{¨} | \glit{\~} | \glit{(} | \glit{)} | \glit{\{} | \glit{\}} | \glit{[} | \glit{]} | \glit{§} | \glit{\textbackslash n} | \glit{\textbackslash t}
        
-	\gtext{StringLit} ::= \glit{\"}$Character^*$\glit{\"}
+	\gtext{StringLit} ::= \glit{\"}$Character^*$\glit{ \"}
 	
 	\gtext{CharLit} ::= \glit{'}$Character$\glit{'}
 	
