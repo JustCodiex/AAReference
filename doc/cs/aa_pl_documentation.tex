@@ -2,6 +2,7 @@
 
 % Packages
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{latexsym}
 \usepackage{amsfonts}
@@ -20,7 +21,9 @@
 \usepackage{logicproof}
 \usepackage{longtable}
 \usepackage{syntax}
+\usepackage{lastpage}
 \usepackage[a4paper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{pdfpages}
 
 %%% Hyperlink setup
 \hypersetup {
@@ -61,16 +64,25 @@
 \title{Å Official Documentation}
 \author{The official specification for Å}
 \date{}
+
+% Page styling
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+
 % Custom commands
 \newcommand{\newsection}[1]{
+	\phantomsection
 	\addcontentsline{toc}{section}{#1}
 	\section*{\centering #1}
 }
 \newcommand{\newsubsection}[1]{
+	\phantomsection
 	\addcontentsline{toc}{subsection}{#1}
 	\subsection*{#1}
 }
 \newcommand{\newsubsubsection}[1]{
+	\phantomsection
 	\addcontentsline{toc}{subsubsection}{#1}
 	\subsubsection*{#1}
 }
@@ -82,6 +94,7 @@
 \newpage
 \clearpage
 \setcounter{page}{1}
+\pagenumbering{arabic}
 \newsection{Abstract}
 This document is the official document for the Å programming language. It shows how a program is parsed from source code into a binary format and then how the binary is executed. Thus this document will also contain the semantics of the language and an explanation for the default implementation of the language.  Besides explaining the semantics and syntax, this document will also explain how the source code is parsed. Additionally, how this parse result is operated on to convert it into a valid piece of Å code.
 \\\\
