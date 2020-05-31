@@ -138,7 +138,17 @@ The parsing of Å source code is split into several different stages. The first 
 \\\\
 The first parsing error - syntax error - recorded will stop the parsing of the code and immediately report the syntax error to the console. A short explanation of what failed (for example what was expected and what was found) is reported alongside a position (line and column) in code. If possible, a specific syntax error code is also given, hopefully, making it easier to correct or lookup solutions.
 \newsubsection{Lexical Analysis}
-...
+The lexical process is rather simple and is using a two-pass system. In the first pass, most if not all words and special characters are tokenized. Each found token saves the result in a data structure containing the associated text and the position in code. The token types are:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|}
+	\hline
+	\# & Token & Description & Regular Expression \\ \hline
+	0 & invalid & Invalid Token & ' \\ \hline
+	1 & whitespace & Whitespace character & $|\Lambda$ \\ \hline
+	2 & identifier & Identifier - name or word & $(_|[a-Z])^+([0-9]|[a-Z])^*$ \\ \hline
+	\end{tabular}
+\end{table}
 \newsubsection{Parse tree (PT)}
 ...
 \newsubsection{Abstract Syntax Tree (AST)}

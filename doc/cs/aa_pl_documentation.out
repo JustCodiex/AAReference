@@ -2,30 +2,30 @@
 \BOOKMARK [1][-]{section*.2}{Using the Virtual Machine}{}% 2
 \BOOKMARK [1][-]{lstnumber.-1.12}{Parsing}{}% 3
 \BOOKMARK [2][-]{section*.5}{Lexical Analysis}{lstnumber.-1.12}% 4
-\BOOKMARK [2][-]{section*.6}{Parse tree \(PT\)}{lstnumber.-1.12}% 5
-\BOOKMARK [2][-]{section*.7}{Abstract Syntax Tree \(AST\)}{lstnumber.-1.12}% 6
-\BOOKMARK [2][-]{section*.8}{Simplifying the AST}{lstnumber.-1.12}% 7
-\BOOKMARK [1][-]{section*.9}{Static Analysis}{}% 8
-\BOOKMARK [2][-]{section*.10}{Type declarations}{section*.9}% 9
-\BOOKMARK [2][-]{section*.11}{Function Matching}{section*.9}% 10
-\BOOKMARK [2][-]{section*.12}{Building Inheritance Trees}{section*.9}% 11
-\BOOKMARK [2][-]{section*.13}{Control path verification}{section*.9}% 12
-\BOOKMARK [1][-]{section*.14}{Type System}{}% 13
-\BOOKMARK [2][-]{section*.15}{Static Type Environment}{section*.14}% 14
-\BOOKMARK [2][-]{section*.16}{Dynamic Type Environment}{section*.14}% 15
-\BOOKMARK [2][-]{section*.17}{Typechecking}{section*.14}% 16
-\BOOKMARK [1][-]{section*.18}{Internals of the Virtual Machine}{}% 17
-\BOOKMARK [2][-]{section*.19}{Executing bytecode}{section*.18}% 18
-\BOOKMARK [2][-]{section*.20}{The operand and call stacks}{section*.18}% 19
-\BOOKMARK [2][-]{section*.21}{The Ref Value Environment}{section*.18}% 20
-\BOOKMARK [2][-]{section*.22}{The Garbage Collector}{section*.18}% 21
-\BOOKMARK [1][-]{section*.23}{Structure of an \305-binary file}{}% 22
-\BOOKMARK [1][-]{section*.24}{Compiler}{}% 23
-\BOOKMARK [2][-]{section*.25}{Compiling the AST}{section*.24}% 24
-\BOOKMARK [2][-]{section*.26}{Verifying \305 Bytecode}{section*.24}% 25
-\BOOKMARK [1][-]{section*.27}{Appendix}{}% 26
-\BOOKMARK [2][-]{section*.28}{Appendix 1: Complete Overview of Grammar}{section*.27}% 27
-\BOOKMARK [2][-]{section*.29}{Appendix 2: Complete Overview of Operational Semantics}{section*.27}% 28
-\BOOKMARK [2][-]{figure.caption.31}{Appendix 3: Complete Overview of Typing Rules}{section*.27}% 29
-\BOOKMARK [2][-]{section*.32}{Appendix 4: Complete Overview of Compile Errors}{section*.27}% 30
-\BOOKMARK [2][-]{section*.33}{Appendix 5: Complete Overview of Instruction List}{section*.27}% 31
+\BOOKMARK [2][-]{table.caption.7}{Parse tree \(PT\)}{lstnumber.-1.12}% 5
+\BOOKMARK [2][-]{section*.8}{Abstract Syntax Tree \(AST\)}{lstnumber.-1.12}% 6
+\BOOKMARK [2][-]{section*.9}{Simplifying the AST}{lstnumber.-1.12}% 7
+\BOOKMARK [1][-]{section*.10}{Static Analysis}{}% 8
+\BOOKMARK [2][-]{section*.11}{Type declarations}{section*.10}% 9
+\BOOKMARK [2][-]{section*.12}{Function Matching}{section*.10}% 10
+\BOOKMARK [2][-]{section*.13}{Building Inheritance Trees}{section*.10}% 11
+\BOOKMARK [2][-]{section*.14}{Control path verification}{section*.10}% 12
+\BOOKMARK [1][-]{section*.15}{Type System}{}% 13
+\BOOKMARK [2][-]{section*.16}{Static Type Environment}{section*.15}% 14
+\BOOKMARK [2][-]{section*.17}{Dynamic Type Environment}{section*.15}% 15
+\BOOKMARK [2][-]{section*.18}{Typechecking}{section*.15}% 16
+\BOOKMARK [1][-]{section*.19}{Internals of the Virtual Machine}{}% 17
+\BOOKMARK [2][-]{section*.20}{Executing bytecode}{section*.19}% 18
+\BOOKMARK [2][-]{section*.21}{The operand and call stacks}{section*.19}% 19
+\BOOKMARK [2][-]{section*.22}{The Ref Value Environment}{section*.19}% 20
+\BOOKMARK [2][-]{section*.23}{The Garbage Collector}{section*.19}% 21
+\BOOKMARK [1][-]{section*.24}{Structure of an \305-binary file}{}% 22
+\BOOKMARK [1][-]{section*.25}{Compiler}{}% 23
+\BOOKMARK [2][-]{section*.26}{Compiling the AST}{section*.25}% 24
+\BOOKMARK [2][-]{section*.27}{Verifying \305 Bytecode}{section*.25}% 25
+\BOOKMARK [1][-]{section*.28}{Appendix}{}% 26
+\BOOKMARK [2][-]{section*.29}{Appendix 1: Complete Overview of Grammar}{section*.28}% 27
+\BOOKMARK [2][-]{section*.30}{Appendix 2: Complete Overview of Operational Semantics}{section*.28}% 28
+\BOOKMARK [2][-]{figure.caption.32}{Appendix 3: Complete Overview of Typing Rules}{section*.28}% 29
+\BOOKMARK [2][-]{section*.33}{Appendix 4: Complete Overview of Compile Errors}{section*.28}% 30
+\BOOKMARK [2][-]{section*.34}{Appendix 5: Complete Overview of Instruction List}{section*.28}% 31
