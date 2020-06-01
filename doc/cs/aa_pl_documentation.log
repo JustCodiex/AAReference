@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.13)  1 JUN 2020 19:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.13)  1 JUN 2020 21:48
 entering extended mode
 **./aa_pl_documentation.tex
 (aa_pl_documentation.tex
@@ -787,74 +787,80 @@ Underfull \hbox (badness 10000) in paragraph at lines 177--183
 
  []
 
-[3] [4] [5] [6] [7] [8] [9]
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
+
+ []
+
+[4] [5] [6] [7] [8] [9]
 LaTeX Font Info:    Trying to load font information for OML+cmtt on input line 
-267.
-LaTeX Font Info:    No file OMLcmtt.fd. on input line 267.
+269.
+LaTeX Font Info:    No file OMLcmtt.fd. on input line 269.
 
 
 LaTeX Font Warning: Font shape `OML/cmtt/m/n' undefined
 (Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textless' on input line 267.
+(Font)              for symbol `textless' on input line 269.
 
 LaTeX Font Info:    Trying to load font information for OMS+cmtt on input line 
-267.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 267.
+269.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 269.
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbar' on input line 267.
+(Font)              for symbol `textbar' on input line 269.
 
 [10]
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-300.
+302.
  (E:\MikTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [11] [12] [13] [14]
-Underfull \vbox (badness 10000) detected at line 350
+Underfull \vbox (badness 10000) detected at line 352
  []
 
 [15] [16] [17] 
 AED: lastpage setting LastPage
 [18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 491.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 491.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 493.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 493.
  (aa_pl_documentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 491.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 491.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 493.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 493.
 Package rerunfilecheck Info: File `aa_pl_documentation.out' has not changed.
 (rerunfilecheck)             Checksum: AAE77082AB4E8AD8D593ECE9EE90C259;2304.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 491.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 493.
  ) 
 Here is how much of TeX's memory you used:
- 15695 strings out of 481556
- 263096 string characters out of 2932034
+ 15699 strings out of 481556
+ 263140 string characters out of 2932034
  769835 words of memory out of 3000000
- 30537 multiletter control sequences out of 15000+200000
- 544722 words of font info for 77 fonts, out of 3000000 for 9000
+ 30539 multiletter control sequences out of 15000+200000
+ 545236 words of font info for 79 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,16n,60p,674b,1257s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Jakob\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tctt1000.pk><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><E:/MikTeX/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb><E:/MikTeX/fonts/type1/public/amsfonts/c
-m/cmcsc10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTeX/f
-onts/type1/public/amsfonts/cm/cmmi8.pfb><E:/MikTeX/fonts/type1/public/amsfonts/
-cm/cmr10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/MikTeX/fon
-ts/type1/public/amsfonts/cm/cmr17.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm
-/cmr5.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTeX/fonts/t
-ype1/public/amsfonts/cm/cmr7.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmr8
-.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><E:/MikTeX/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmsy7
-.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><E:/MikTeX/fonts/type
-1/public/amsfonts/cm/cmtt8.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmtt9.
-pfb>
-Output written on aa_pl_documentation.pdf (19 pages, 287190 bytes).
+m/cmcsc10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmitt10.pfb><E:/MikTeX/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/MikTeX/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><E:/MikTeX/f
+onts/type1/public/amsfonts/cm/cmr12.pfb><E:/MikTeX/fonts/type1/public/amsfonts/
+cm/cmr17.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><E:/MikTeX/font
+s/type1/public/amsfonts/cm/cmr6.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/c
+mr7.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><E:/MikTeX/fonts/typ
+e1/public/amsfonts/cm/cmss10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/MikTeX/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmtt
+10.pfb><E:/MikTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><E:/MikTeX/fonts/typ
+e1/public/amsfonts/cm/cmtt9.pfb>
+Output written on aa_pl_documentation.pdf (19 pages, 303568 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
+ 440 PDF objects out of 1000 (max. 8388607)
  106 named destinations out of 1000 (max. 500000)
  265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -182,7 +182,9 @@ After the initial lexical run, the second pass starts. Here tokens that can be m
 All registered identifiers are matched against \hyperref[sec:Keywords]{\textsf{keywordlist}}. If a match is found with any word from the above, the identifier token is "upgraded" to be a keyword token. Some keywords may be contextualised, meaning their given meaning may only apply if in the correct context. This is not decided by the lexical analysis but either by the lexical to parse tree conversion.
 \newpage
 \newsubsection{Parse tree (PT)}
-...
+Creating the parse tree is done using a three pass algorithm. The first pass takes the result of the lexical analysis as input. It then converts the result into an array (\textsf{std::vector}) with a tree node representation of the result. This will create a flattened tree - no parents or children set. It's also here the parser determines if a token of type \texttt{OP} is a binary or a unary operation.
+\\\\
+The lexical token type \texttt{OP} is by default designated as a unary operator, unless any literal type, end parenthesis, end index (\texttt{]}), or an identifier is preceding it. It will then be treated as a binary operator. \underline{\textit{This may change when \texttt{++} and \texttt{--} is implemented.}}
 \newsubsection{Abstract Syntax Tree (AST)}
 ...
 \newsubsection{Simplifying the AST}
