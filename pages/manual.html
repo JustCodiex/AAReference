@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Å Reference</title>
+        <link rel="stylesheet" href="styles/theme.css">
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="scripts/functionality.js"></script>
+    </head>
+    <body class="aa-body-main" onload="hook();">
+        <div class="aa-header">
+            <h1 class="aa-refname">Å Reference</h1>
+            <div class="aa-btnlst">
+                <button class="aa-hbutton" onclick="window.open('https://justcodiex.github.io/AAReference/documentation.html', '_self')">Reference</button>
+                <button class="aa-hbutton" onclick="window.open('https://justcodiex.github.io/AAReference/tutorials.html', '_self')">Tutorials</button>
+                <button class="aa-hbutton" onclick="window.open('https://github.com/JustCodiex/AA')">Github</button>
+                <button class="aa-hbutton" onclick="window.open('https://justcodiex.github.io/AAReference/about.html', '_self')">About</button>
+            </div>
+        </div>
+        <div class="aa-content-body">
+            <div class="aa-sidebar">
+                <button class="aa-collapse-button">1. Getting Started</button>
+                <div class="aa-collapse-content">
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_1_1.html')">1.1 Installing Å</button>
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_1_2.html')">1.2 Hello World</button>
+                </div>
+                <button class="aa-collapse-button">2. Language Elements</button>
+                <div class="aa-collapse-content">
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_2_1.html')">2.1 Airthmetic</button>
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_2_2.html')">2.2 Flow Control</button>
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_2_3.html')">2.3 Functions</button>
+                </div>
+                <button class="aa-collapse-button">3. Object Style</button>
+                <div class="aa-collapse-content">
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_3_1.html')">3.1 Class structure</button>
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_3_2.html')">3.2 Inheritance</button>
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_3_3.html')">3.3 Tagged classes</button>
+                </div>
+                <button class="aa-collapse-button">4. Functional Style</button>
+                <div class="aa-collapse-content">
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_4_1.html')">4.1 Lambdas</button>
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_4_2.html')">4.2 Currying</button>
+                </div>
+                <button class="aa-collapse-button">5. The Standard Library</button>
+                <div class="aa-collapse-content">
+                    <button class="aa-collapse-subbutton" onclick="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_5_1.html')">5.1 The I/O library</button>
+                </div>
+            </div>
+            <div class="aa-content-flow" id="aa-content-field" onload="clear_and_set('aa-content-field', 'https://justcodiex.github.io/AAReference/tut/aa_1_1.html')">
+            </div>
+        </div>
+        <div class="aa-footer">
+
+        </div>
+    </body>
+</html>
