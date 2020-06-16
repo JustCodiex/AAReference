@@ -88,6 +88,10 @@
 	\subsubsection*{#1}
 }
 
+%% Grammar commands
+\newcommand{\gtext}[1]{<$#1$>}
+\newcommand{\glit}[1]{\texttt{#1}}
+
 \begin{document}
 \maketitle
 \tableofcontents
@@ -111,7 +115,7 @@ Most arguments given to the machine can be executed in sequence (order of argume
 	\centering
 	\begin{tabular}{|l|l|c|c|}
 	\hline 
-	Argument & Description & Available & Version \\ \hline
+	Argument & Description & Mode & Version \\ \hline
 	\texttt{-ga} & Generate formatted bytecode from compilation & R\textbar D & 1.0 \\ \hline
 	\texttt{-lc} & Log the compile time in seconds & R\textbar D & 1.0 \\ \hline
 	\texttt{-le} & Log the execute time in seconds & R\textbar D & 1.0 \\ \hline
@@ -119,9 +123,13 @@ Most arguments given to the machine can be executed in sequence (order of argume
 	\texttt{-pause} & Will need user input to close & R\textbar D & 1.0 \\ \hline
 	\texttt{-trace} & Trace virtual machine operations & D & 1.0 \\ \hline
 	\texttt{-test_regressive} & Run regression tests & D & 1.0 \\ \hline
+	\texttt{-test_projects} & Run project regression tests & D & 1.0 \\ \hline
 	\texttt{-unparse} & Unparse source after parsing & R\textbar D & 1.0 \\ \hline
+	\texttt{-verify} & Verify program before running it & R\textbar D & 1.0 \\ \hline
 	\texttt{-c "input file"} & Compile the input file & R\textbar D & 1.0 \\ \hline
-	\texttt{-oae "output file"} & Output operation to specified file & R\textbar D & 1.0 \\ \hline
+	\texttt{-r "input file"} & Run the input file (Must be a binary) & R\textbar D & 1.0 \\ \hline
+	\texttt{-o "output file"} & Output operation to file & R\textbar D & 1.0 \\ \hline
+	\texttt{-oae "output file"} & Output operation to specified file and execute it & R\textbar D & 1.0 \\ \hline
 	\end{tabular}
 \end{table}\noindent
 Some command arguments (Marked with a 'D') may only work if the VM (The \texttt{C++} code) was compiled with the \texttt{_DEBUG} flag enabled. These operations may severely hinder the performance of the language and the VM and have, therefore, been disabled for public builds. In the case of \texttt{-test_regressive}, it cannot be guaranteed the end user has the files for running the regression tests. Thus to ensure no error reports of this, or unfortunate crashes, this feature is only available for the developers of Å.
@@ -179,15 +187,69 @@ Some of these tokens may depend on their context (For example, the keyword-ident
 \\\\
 After the initial lexical run, the second pass starts. Here tokens that can be merged are merged. For instance, two operator tokens making up a valid operator if merged. A full list of these operators can be found in appendix 6. In this pass, string literals and char literals are also found, taking all the contents between two quote tokens and putting them into a string or char literal, depending on the length of the contents. This is part of why whitespace is tokenised, as that's how string literals keep track of the whitespace characters.
 \\\\
-All registered identifiers are matched against \hyperref[sec:Keywords]{\textsf{keywordlist}}. If a match is found with any word from the above, the identifier token is "upgraded" to be a keyword token. Some keywords may be contextualised, meaning their given meaning may only apply if in the correct context. This is not decided by the lexical analysis but either by the lexical to parse tree conversion.
+All registered identifiers are matched against the \hyperref[sec:Keywords]{\textsf{keywordlist}}. If a match is found with any word from the above, the identifier token is "upgraded" to be a keyword token. Some keywords may be contextualised, meaning their given meaning may only apply if in the correct context. This is not decided by the lexical analysis but either by the lexical to parse tree conversion or by the parse tree formalizer (third pass of the parse tree creation algorithm).
 \newpage
 \newsubsection{Parse tree (PT)}
 Creating the parse tree is done using a three pass algorithm. The first pass takes the result of the lexical analysis as input. It then converts the result into an array (\textsf{std::vector}) with a tree node representation of the result. This will create a flattened tree - no parents or children set. It's also here the parser determines if a token of type \texttt{OP} is a binary or a unary operation.
 \\\\
-The lexical token type \texttt{OP} is by default designated as a unary operator, unless any literal type, end parenthesis, end index (\texttt{]}), or an identifier is preceding it. It will then be treated as a binary operator. \underline{\textit{This may change when \texttt{++} and \texttt{--} is implemented.}}
+The lexical token type \texttt{OP} is by default designated as a pre-unary operator, unless any literal type, end parenthesis, end index (\texttt{]}), or an identifier token is preceding it. Then it will be treated as a binary operator. If such is not the case, the operator is then treated as a pre-unary operator. Only if an identifier follows an operator (\texttt{++} and \texttt{--}) and the previous does not hold will it be defined as a post-unary operator. The partial BNF grammar for parsing this syntax would be:
+\begin{grammar}
+	\gtext{Expr} ::= $Expr$
+	\alt \glit{(}$Expr$\glit{)}
+	\alt $Expr$ $BinaryOp$ $Expr$
+	\alt $PreUnaryOp$ $Expr$
+	\alt $IncDecOp$ $Id$
+	\alt $Id$ $IncDecOp$
+	\alt \hyperref[sec:ap1]{\textsf{See full definition in Appendix 1}}
+
+	\gtext{BinaryOp} ::= \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\textless} | \glit{\textgreater} | \glit{\textless}= | \glit{\textgreater}= | \glit{==} | \glit{!=} | \glit{+=} | \glit{-=} | \glit{/=} | \glit{*=} | \glit{\%=}
+	\alt \glit{\textbar\textbar} | $\&\&$ | \glit{\textbar} | $\&$ | \glit{\textless\textless} | \glit{\textgreater\textgreater} | \glit{=>}
+	
+	\gtext{PreUnaryOp} ::= \glit{-} | \glit{!} | \glit{\#}
+	
+	\gtext{IncDecOp} ::= \glit{++} | \glit{--}
+
+	\gtext{Id} ::= \hyperref[sec:ap1]{\textsf{See full definition in Appendix 1}}
+
+\end{grammar}
+\par\noindent\rule{\textwidth - 2pt}{0.2pt}\\
+From the above it's not fully clear, however, post-unary operators have higher precedence than pre-unary operators. Additionally, the unary operators also have higher precedence than binary operators. Thus, the following will not be valid code:
+\begin{lstlisting}
+{
+	int x = 5;
+	int y = 5;
+	x--y;
+}
+\end{lstlisting}
+The above code will be rejected by the parser in the very first pass. The compiler will cite \textit{"'\texttt{--}' cannot be used as a binary operator"} as the reason it will not compile the above. Additionally, it should be made clear that increment and decrement operators may only operate on variables, given their \hyperref[sec:IncDecOp]{\textsf{specific behaviour}}.
+\\\\
+Following this token operation, the tree is unflattened. Meaning several of the syntax rules are now applied. More specifically, arithmetic, unary, assignment, groupings, and other types of bindings are applied. Meaning we here start forming the actual parse tree, such that the third pass can begin converting parts of the tree into specific node types. Which in turn will make it easier to translate into an abstract syntax tree and from there run more advanced analyses of the input - to determine the correctness of the program. No syntax errors are detected in the second pass - meaning the potential syntax errors are left to the third and final pass.
+\\\\
+By default this pass will attempt to find certain keywords, operators, or other patterns and create sub-expressions from this - where these sub expressions are added as children to the tree node that triggered the operation. Note, this is not where binary and unary operations (and the like) are formed. This pass is however, the pass where it's determined if something is a parameter list (for a function call or function declaration) or if it's an enclosed expression.
+\newpage
+The second pass follows a strict hierarchy when applying precedence rules. Which can be seen below:
+ \begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|l|}
+	\hline
+	Priority & Name & Symbols & {\centering Description and Examples}  \\ \hline
+	1 & Blocks & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	2 & Expressions & \texttt{(, )} & Expressions, code captured between a set of parentheses \\ \hline
+	3 & Indexers & \texttt{[, ]} & Indexing - or subscripting - on some identifier \\ \hline
+	4 & Member Access & \texttt{::, .} & Left-to-right associative member access (\texttt{x.y} and \texttt{x::y}) \\ \hline
+	5 & Unary operators & \texttt{!, \#, -, --, ++} & Examples: \texttt{!x}, \texttt{\#x}, \texttt{-x}, \texttt{--x}, \texttt{++x}, \texttt{x--}, \texttt{x++} \\ \hline
+	6 & b & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	7 &  & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	8 &  & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	9 &  & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	\end{tabular}
+\end{table} \noindent
+\newpage
 \newsubsection{Abstract Syntax Tree (AST)}
 ...
-\newsubsection{Simplifying the AST}
+\newsubsubsection{Expanding the AST}
+...
+\newsubsubsection{Simplifying the AST}
 ...
 \newpage
 \newsection{Static Analysis}
@@ -210,6 +272,12 @@ The lexical token type \texttt{OP} is by default designated as a unary operator,
 \newsubsection{Typechecking}
 ...
 \newpage
+\newsection{Evaluation of Code}
+\newsubsection{Arithmetic Operators}
+\label{sec:IncDecOp}
+\newsubsection{Functional Operators}
+\newsubsection{Declarative Operators}
+\newpage
 \newsection{Internals of the Virtual Machine}
 ...
 \newsubsection{Executing bytecode}
@@ -220,21 +288,29 @@ The lexical token type \texttt{OP} is by default designated as a unary operator,
 ...
 \newsubsection{The Garbage Collector}
 \newpage
-\newsection{Structure of an Å-binary file}
-...
-\newpage
 \newsection{Compiler}
 ...
 \newsubsection{Compiling the AST}
 ...
+\newpage
+\newsubsubsection{\centering AST to Bytecode Flowchart}
+\begin{figure}[H]
+\centering
+\includegraphics[width = 14cm]{CompileProcess.png}
+\caption{The flowchart of the compile process}
+\end{figure}\noindent
+\textit{Probably some descriptive text}
+\newpage
 \newsubsection{Verifying Å Bytecode}
+...
+\newpage
+\newsection{Structure of an Å-binary file}
 ...
 \newpage
 \newsection{Appendix}
 The following pages are the appendices of this specification and contain full overview over the grammar, semantics, type rules, compile errors, runtime errors, and instruction list.
 \newsubsection{Appendix 1: Complete Overview of Grammar}
-\newcommand{\gtext}[1]{<$#1$>}
-\newcommand{\glit}[1]{\texttt{#1}}
+\label{sec:ap1}
 The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\url{https://en.wikipedia.org/wiki/Kleene_star}} and '$^+$' (Kleene Plus). The $\epsilon$ character symbolises whitespace.
 \begin{grammar}
 	\gtext{Statement} ::= $Expr$\glit{;}
@@ -243,7 +319,8 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 	\gtext{Expr} := \glit{(}$Expr$\glit{)}
 	\alt $Expr$ $BinaryOp$ $Expr$
 	\alt $PreUnaryOp$ $Expr$
-	\alt $Expr$ $PostUnaryOp$
+	\alt $IncDecOp$ $Id$
+	\alt $Id$ $IncDecOp$
 	\alt $IntLit$
 	\alt $FloatLit$
 	\alt $DoubleLit$
@@ -266,12 +343,12 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 	
 	\gtext{Param} ::= $TypeID$ $Id$ | $Param$\glit{,} $Param$
 	
-	\gtext{BinaryOp} ::= \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\textless} | \glit{\textgreater} | \glit{\textless}= | \glit{\textgreater}= | \glit{==} | \glit{!=} | \glit{+=} | \glit{-=} | \glit{\textbar\textbar} 
-	\alt $\&\&$ | \glit{\textbar} | $\&$ | \glit{\textless\textless} | \glit{\textgreater\textgreater}
+	\gtext{BinaryOp} ::= \glit{+} | \glit{-} | \glit{*} | \glit{/} | \glit{\%} | \glit{\textless} | \glit{\textgreater} | \glit{\textless}= | \glit{\textgreater}= | \glit{==} | \glit{!=} | \glit{+=} | \glit{-=} | \glit{/=} | \glit{*=} | \glit{\%=}
+	\alt \glit{\textbar\textbar} | $\&\&$ | \glit{\textbar} | $\&$ | \glit{\textless\textless} | \glit{\textgreater\textgreater} | \glit{=>}
 	
 	\gtext{PreUnaryOp} ::= \glit{-} | \glit{!} | \glit{\#}
 	
-	\gtext{PostUnaryOp} ::= \glit{++} | \glit{--}
+	\gtext{IncDecOp} ::= \glit{++} | \glit{--}
 
 	\gtext{Digit} ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 

@@ -4,31 +4,37 @@
 \contentsline {section}{Parsing}{3}{section*.7}%
 \contentsline {subsection}{Lexical Analysis}{3}{section*.9}%
 \contentsline {subsection}{Parse tree (PT)}{4}{section*.12}%
-\contentsline {subsection}{Abstract Syntax Tree (AST)}{4}{section*.14}%
-\contentsline {subsection}{Simplifying the AST}{4}{section*.16}%
-\contentsline {section}{Static Analysis}{5}{section*.18}%
-\contentsline {subsection}{Type declarations}{5}{section*.20}%
-\contentsline {subsection}{Function Matching}{5}{section*.22}%
-\contentsline {subsection}{Building Inheritance Trees}{5}{section*.24}%
-\contentsline {subsection}{Control path verification}{5}{section*.26}%
-\contentsline {section}{Type System}{6}{section*.28}%
-\contentsline {subsection}{Static Type Environment}{6}{section*.30}%
-\contentsline {subsection}{Dynamic Type Environment}{6}{section*.32}%
-\contentsline {subsection}{Typechecking}{6}{section*.34}%
-\contentsline {section}{Internals of the Virtual Machine}{7}{section*.36}%
-\contentsline {subsection}{Executing bytecode}{7}{section*.38}%
-\contentsline {subsection}{The operand and call stacks}{7}{section*.40}%
-\contentsline {subsection}{The Ref Value Environment}{7}{section*.42}%
-\contentsline {subsection}{The Garbage Collector}{7}{section*.44}%
-\contentsline {section}{Structure of an Å-binary file}{8}{section*.46}%
-\contentsline {section}{Compiler}{9}{section*.48}%
-\contentsline {subsection}{Compiling the AST}{9}{section*.50}%
-\contentsline {subsection}{Verifying Å Bytecode}{9}{section*.52}%
-\contentsline {section}{Appendix}{10}{section*.54}%
-\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{10}{section*.56}%
-\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{12}{section*.58}%
-\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{13}{section*.61}%
-\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{14}{section*.63}%
-\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{15}{section*.65}%
-\contentsline {subsection}{Appendix 6: Complete operator list}{17}{section*.67}%
-\contentsline {subsection}{Appendix 7: Complete keyword list}{18}{section*.69}%
+\contentsline {subsection}{Abstract Syntax Tree (AST)}{6}{section*.15}%
+\contentsline {subsubsection}{Expanding the AST}{6}{section*.17}%
+\contentsline {subsubsection}{Simplifying the AST}{6}{section*.19}%
+\contentsline {section}{Static Analysis}{7}{section*.21}%
+\contentsline {subsection}{Type declarations}{7}{section*.23}%
+\contentsline {subsection}{Function Matching}{7}{section*.25}%
+\contentsline {subsection}{Building Inheritance Trees}{7}{section*.27}%
+\contentsline {subsection}{Control path verification}{7}{section*.29}%
+\contentsline {section}{Type System}{8}{section*.31}%
+\contentsline {subsection}{Static Type Environment}{8}{section*.33}%
+\contentsline {subsection}{Dynamic Type Environment}{8}{section*.35}%
+\contentsline {subsection}{Typechecking}{8}{section*.37}%
+\contentsline {section}{Evaluation of Code}{9}{section*.39}%
+\contentsline {subsection}{Arithmetic Operators}{9}{section*.41}%
+\contentsline {subsection}{Functional Operators}{9}{section*.43}%
+\contentsline {subsection}{Declarative Operators}{9}{section*.45}%
+\contentsline {section}{Internals of the Virtual Machine}{10}{section*.47}%
+\contentsline {subsection}{Executing bytecode}{10}{section*.49}%
+\contentsline {subsection}{The operand and call stacks}{10}{section*.51}%
+\contentsline {subsection}{The Ref Value Environment}{10}{section*.53}%
+\contentsline {subsection}{The Garbage Collector}{10}{section*.55}%
+\contentsline {section}{Compiler}{11}{section*.57}%
+\contentsline {subsection}{Compiling the AST}{11}{section*.59}%
+\contentsline {subsubsection}{\centering AST to Bytecode Flowchart}{12}{section*.61}%
+\contentsline {subsection}{Verifying Å Bytecode}{13}{section*.64}%
+\contentsline {section}{Structure of an Å-binary file}{14}{section*.66}%
+\contentsline {section}{Appendix}{15}{section*.68}%
+\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{15}{section*.70}%
+\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{17}{section*.72}%
+\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{18}{section*.75}%
+\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{19}{section*.77}%
+\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{20}{section*.79}%
+\contentsline {subsection}{Appendix 6: Complete operator list}{22}{section*.81}%
+\contentsline {subsection}{Appendix 7: Complete keyword list}{23}{section*.83}%
