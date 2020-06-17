@@ -388,7 +388,18 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 \end{grammar}
 \newpage
 \newsubsection{Appendix 2: Complete Overview of Operational Semantics}
-...
+\begin{table}[H]
+	\centering
+	\caption*{Environment list}
+	\begin{tabular}{|l|l|}
+	\hline
+	Symbol & Description \\ \hline
+	$\rho$ & The variable environment \\ \hline
+	$\phi$ & The first-order function environment \\ \hline
+	$\kappa $ & The class environment \\ \hline
+	$\sigma$ & The heap environment \\ \hline
+	\end{tabular}
+\end{table}
 \begin{figure}[H]
 	\centering
 	\begin{mathparpagebreakable}
@@ -399,7 +410,25 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 \end{figure}
 \newpage
 \newsubsection{Appendix 3: Complete Overview of Typing Rules}
-...
+\begin{table}[H]
+	\centering
+	\caption*{Environment list}
+	\begin{tabular}{|l|l|}
+	\hline
+	Symbol & Description \\ \hline
+	$\theta$ & The primitive type environment \\ \hline
+	$\psi$ & The first-order function type environment \\ \hline
+	$\gamma $ & The class type environment \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}
 \newpage
 \newsubsection{Appendix 4: Complete Overview of Compile Errors}
 \newpage

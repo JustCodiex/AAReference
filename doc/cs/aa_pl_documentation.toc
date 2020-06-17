@@ -33,8 +33,8 @@
 \contentsline {section}{Appendix}{15}{section*.68}%
 \contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{15}{section*.70}%
 \contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{17}{section*.72}%
-\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{18}{section*.75}%
-\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{19}{section*.77}%
-\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{20}{section*.79}%
-\contentsline {subsection}{Appendix 6: Complete operator list}{22}{section*.81}%
-\contentsline {subsection}{Appendix 7: Complete keyword list}{23}{section*.83}%
+\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{18}{section*.76}%
+\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{19}{section*.80}%
+\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{20}{section*.82}%
+\contentsline {subsection}{Appendix 6: Complete operator list}{22}{section*.84}%
+\contentsline {subsection}{Appendix 7: Complete keyword list}{23}{section*.86}%
