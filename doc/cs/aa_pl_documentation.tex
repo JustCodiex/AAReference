@@ -87,15 +87,19 @@
 	\subsubsection*{#1}
 }
 
+%% Semantic commands
+\newcommand{\envall}{\rho, \phi, \kappa, \sigma \vdash}
+\newcommand{\rspace}{ \ \ \ \ }
+
 %% Grammar commands
 \newcommand{\gtext}[1]{<$#1$>}
 \newcommand{\glit}[1]{\texttt{#1}}
 
 \begin{document}
 \pagestyle{empty}
+\pagenumbering{gobble}
 \maketitle
 \tableofcontents
-\pagestyle{empty}
 \clearpage
 \pagestyle{fancyplain}
 \setcounter{page}{1}
@@ -280,10 +284,103 @@ In the third pass, the remaining part of the parsing is done, thus finalising th
 ...
 \newpage
 \newsection{Evaluation of Code}
+In this section, the semantic rules of Å are introduced in the form of inference rules. These work in the same way as introduced in the type rule system. When evaluating code, that is, what will happen when a piece of code is about to be executed, we have four environments to consider. The variable environment, denoted as $\rho$; The first-order function environment, denoted with $\phi$; The class environment - the environment containing valid classes, symbolised by $\kappa$, and finally, the heap environment, denoted with $\sigma$ and will contain instances of elements in $\kappa$.
+\\\\
+Only some of the semantic rules are explained as it should be clear what the intention of a given semantic rule is. However, some rules may require some explaining or comments to how or why the rule is as it is.
+\newsubsection{Environment Operators}
+These are the semantic rules we use when interacting directly with the environments. Such as lookup operations. Additionally, we define $\omega \in \{ \texttt{U}, \texttt{S}, \texttt{A}, \texttt{O} \}$, being the memory pointer type.
+\begin{figure}[H]
+\centering
+	\begin{mathparpagebreakable}
+		\infer[VariableLookup]
+		{\envall \rho (x) = v \neq (\ell, \omega, \sigma)}
+		{\envall x \Rightarrow v, \sigma}
+		\and
+		\infer[HeapObjectLookup]
+		{\envall \rho (x) = (\ell, \omega, \sigma) \rspace \sigma(\ell)=v \rspace \omega = \texttt{O}}
+		{\envall x \Rightarrow v, \sigma}
+		\and
+		\infer[HeapStringLookup]
+		{\envall \rho (x) = (\ell, \omega, \sigma) \rspace \sigma(\ell)=v \rspace \omega = \texttt{S}}
+		{\envall x \Rightarrow v, \sigma}
+		\and
+		\infer[HeapArrayLookup]
+		{\envall \rho (x) = (\ell, \omega, \sigma) \rspace \sigma(\ell)=v \rspace \omega = \texttt{A}}
+		{\envall x \Rightarrow v, \sigma}
+		\and
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+When lookup up a variable we make sure it's not a reference variable. That is, we make sure it's not a reference pointer, being the tuple $(\ell, \omega, \sigma)$. We include the heap environment in the tuple, due to the implementation in the VM, such that it's always possible to fetch the value of a reference variable. In the semantic rules it's obsolete.
+\newsubsection{Literals}
+The semantic rules for basic literals. The rules for evaluating (signed and unsigned) integers of N-bits are not fully shown, though their rules are defined in \hyperref[sec:ap2]{\textsf{Appendix 2}}. 
+\begin{figure}[H]
+\centering
+	\begin{mathparpagebreakable}
+		\infer[IntLit$_N$]
+		{i \in \texttt{IntLit}_N \text{ representing } v \in \mathbb{Z} \rspace -(2^{N-1})\leq v \leq (2^{N-1})-1}
+		{\envall i \Rightarrow v, \sigma}
+		\and
+		\infer[RealLit$_N$]
+		{r \in \texttt{RealLit}_N \text{ representing } v \in \mathbb{R}}
+		{\envall r \Rightarrow v, \sigma}
+		\and
+		\infer[True]
+		{ }
+		{\envall \texttt{true} \Rightarrow \text{true}, \sigma}
+		\and
+		\infer[False]
+		{ }
+		{\envall \texttt{false} \Rightarrow \text{false}, \sigma}
+		\and
+		\infer[StringLit]
+		{v=s \in \texttt{StringLit}}
+		{\envall s \Rightarrow v, \sigma}
+		\and
+		\infer[CharLit]
+		{v=c \in \texttt{CharLit}}
+		{\envall c \Rightarrow v, \sigma}
+		\and
+		\infer[NullLit]
+		{v = (\ell =-1, \omega = \texttt{U}, \sigma) }
+		{\envall \texttt{null} \Rightarrow v, \sigma}
+		\and
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+The sets these literals are expected to be a part of are directly relating to the set of values that can be generated using the grammars in \hyperref[sec:ap1]{\textsf{Appendix 1}}. RealLit is equivalent to either FloatLit or DoubleLit, depending on the way the value is declared and how many bits the value is set to use. Meaning we get something along the lines of \texttt{RealLit}$[4\mapsto \texttt{FloatLit}, 8\mapsto \texttt{DoubleLit}]$.
+\newpage
 \newsubsection{Arithmetic Operators}
-\label{sec:IncDecOp}
-\newsubsection{Functional Operators}
-\newsubsection{Declarative Operators}
+The semantic rules for arithmetic operations are defined as:
+\begin{figure}[H]
+\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+		\and
+		% other rules here
+		\label{sec:IncDecOp}
+		\infer[Pre-Increment]
+		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v+1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall \texttt{++}x\Rightarrow v',\rho'\sigma'}
+		\and
+		\infer[Post-Increment]
+		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v+1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall x\texttt{++}\Rightarrow v,\rho'\sigma'}
+		\and
+		\infer[Pre-Decrement]
+		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v-1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall \texttt{--}x\Rightarrow v',\rho'\sigma'}
+		\and
+		\infer[Post-Decrement]
+		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v-1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall x\texttt{--}\Rightarrow v,\rho'\sigma'}
+		\and
+	\end{mathparpagebreakable}
+\end{figure}
+\newsubsection{Logic Operations}
+\newsubsection{Functional Operations}
+\newsubsection{Declarative Operations}
+\newsubsection{Flow Control Operations}
 \newpage
 \newsection{Internals of the Virtual Machine}
 ...
@@ -395,6 +492,7 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 \end{grammar}
 \newpage
 \newsubsection{Appendix 2: Complete Overview of Operational Semantics}
+\label{sec:ap2}
 \begin{table}[H]
 	\centering
 	\caption*{Environment list}
@@ -417,6 +515,7 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 \end{figure}
 \newpage
 \newsubsection{Appendix 3: Complete Overview of Typing Rules}
+\label{sec:ap3}
 \begin{table}[H]
 	\centering
 	\caption*{Environment list}
@@ -431,7 +530,7 @@ The following is a BNF grammar - extended with '$^*$' (Kleene Star)\footnote{\ur
 \begin{figure}[H]
 	\centering
 	\begin{mathparpagebreakable}
-		\infer[Rule]
+		\infer[T-Rule]
 		{top}
 		{bottom}
 	\end{mathparpagebreakable}
