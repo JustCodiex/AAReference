@@ -3,37 +3,40 @@
 \BOOKMARK [1][-]{section*.7}{Parsing}{}% 3
 \BOOKMARK [2][-]{section*.9}{Lexical Analysis}{section*.7}% 4
 \BOOKMARK [2][-]{section*.12}{Parse tree \(PT\)}{section*.7}% 5
-\BOOKMARK [2][-]{section*.15}{Abstract Syntax Tree \(AST\)}{section*.7}% 6
-\BOOKMARK [3][-]{section*.17}{Expanding the AST}{section*.15}% 7
-\BOOKMARK [3][-]{section*.19}{Simplifying the AST}{section*.15}% 8
-\BOOKMARK [1][-]{section*.21}{Static Analysis}{}% 9
-\BOOKMARK [2][-]{section*.23}{Type declarations}{section*.21}% 10
-\BOOKMARK [2][-]{section*.25}{Function Matching}{section*.21}% 11
-\BOOKMARK [2][-]{section*.27}{Building Inheritance Trees}{section*.21}% 12
-\BOOKMARK [2][-]{section*.29}{Control path verification}{section*.21}% 13
-\BOOKMARK [1][-]{section*.31}{Type System}{}% 14
-\BOOKMARK [2][-]{section*.33}{Static Type Environment}{section*.31}% 15
-\BOOKMARK [2][-]{section*.35}{Dynamic Type Environment}{section*.31}% 16
-\BOOKMARK [2][-]{section*.37}{Typechecking}{section*.31}% 17
-\BOOKMARK [1][-]{section*.39}{Evaluation of Code}{}% 18
-\BOOKMARK [2][-]{section*.41}{Arithmetic Operators}{section*.39}% 19
-\BOOKMARK [2][-]{section*.43}{Functional Operators}{section*.39}% 20
-\BOOKMARK [2][-]{section*.45}{Declarative Operators}{section*.39}% 21
-\BOOKMARK [1][-]{section*.47}{Internals of the Virtual Machine}{}% 22
-\BOOKMARK [2][-]{section*.49}{Executing bytecode}{section*.47}% 23
-\BOOKMARK [2][-]{section*.51}{The operand and call stacks}{section*.47}% 24
-\BOOKMARK [2][-]{section*.53}{The Ref Value Environment}{section*.47}% 25
-\BOOKMARK [2][-]{section*.55}{The Garbage Collector}{section*.47}% 26
-\BOOKMARK [1][-]{section*.57}{Compiler}{}% 27
-\BOOKMARK [2][-]{section*.59}{Compiling the AST}{section*.57}% 28
-\BOOKMARK [3][-]{section*.61}{AST to Bytecode Flowchart}{section*.59}% 29
-\BOOKMARK [2][-]{section*.64}{Verifying \305 Bytecode}{section*.57}% 30
-\BOOKMARK [1][-]{section*.66}{Structure of an \305-binary file}{}% 31
-\BOOKMARK [1][-]{section*.68}{Appendix}{}% 32
-\BOOKMARK [2][-]{section*.70}{Appendix 1: Complete Overview of Grammar}{section*.68}% 33
-\BOOKMARK [2][-]{section*.72}{Appendix 2: Complete Overview of Operational Semantics}{section*.68}% 34
-\BOOKMARK [2][-]{section*.76}{Appendix 3: Complete Overview of Typing Rules}{section*.68}% 35
-\BOOKMARK [2][-]{section*.80}{Appendix 4: Complete Overview of Compile Errors}{section*.68}% 36
-\BOOKMARK [2][-]{section*.82}{Appendix 5: Complete Overview of Instruction List}{section*.68}% 37
-\BOOKMARK [2][-]{section*.84}{Appendix 6: Complete operator list}{section*.68}% 38
-\BOOKMARK [2][-]{section*.86}{Appendix 7: Complete keyword list}{section*.68}% 39
+\BOOKMARK [3][-]{section*.14}{First Pass}{section*.12}% 6
+\BOOKMARK [3][-]{section*.16}{Second Pass}{section*.12}% 7
+\BOOKMARK [3][-]{section*.19}{Third Pass}{section*.12}% 8
+\BOOKMARK [2][-]{section*.21}{Abstract Syntax Tree \(AST\)}{section*.7}% 9
+\BOOKMARK [3][-]{section*.23}{Expanding the AST}{section*.21}% 10
+\BOOKMARK [3][-]{section*.25}{Simplifying the AST}{section*.21}% 11
+\BOOKMARK [1][-]{section*.27}{Static Analysis}{}% 12
+\BOOKMARK [2][-]{section*.29}{Type declarations}{section*.27}% 13
+\BOOKMARK [2][-]{section*.31}{Function Matching}{section*.27}% 14
+\BOOKMARK [2][-]{section*.33}{Building Inheritance Trees}{section*.27}% 15
+\BOOKMARK [2][-]{section*.35}{Control path verification}{section*.27}% 16
+\BOOKMARK [1][-]{section*.37}{Type System}{}% 17
+\BOOKMARK [2][-]{section*.39}{Static Type Environment}{section*.37}% 18
+\BOOKMARK [2][-]{section*.41}{Dynamic Type Environment}{section*.37}% 19
+\BOOKMARK [2][-]{section*.43}{Typechecking}{section*.37}% 20
+\BOOKMARK [1][-]{section*.45}{Evaluation of Code}{}% 21
+\BOOKMARK [2][-]{section*.47}{Arithmetic Operators}{section*.45}% 22
+\BOOKMARK [2][-]{section*.49}{Functional Operators}{section*.45}% 23
+\BOOKMARK [2][-]{section*.51}{Declarative Operators}{section*.45}% 24
+\BOOKMARK [1][-]{section*.53}{Internals of the Virtual Machine}{}% 25
+\BOOKMARK [2][-]{section*.55}{Executing bytecode}{section*.53}% 26
+\BOOKMARK [2][-]{section*.57}{The operand and call stacks}{section*.53}% 27
+\BOOKMARK [2][-]{section*.59}{The Ref Value Environment}{section*.53}% 28
+\BOOKMARK [2][-]{section*.61}{The Garbage Collector}{section*.53}% 29
+\BOOKMARK [1][-]{section*.63}{Compiler}{}% 30
+\BOOKMARK [2][-]{section*.65}{Compiling the AST}{section*.63}% 31
+\BOOKMARK [3][-]{section*.67}{AST to Bytecode Flowchart}{section*.65}% 32
+\BOOKMARK [2][-]{section*.70}{Verifying \305 Bytecode}{section*.63}% 33
+\BOOKMARK [1][-]{section*.72}{Structure of an \305-binary file}{}% 34
+\BOOKMARK [1][-]{section*.74}{Appendix}{}% 35
+\BOOKMARK [2][-]{section*.76}{Appendix 1: Complete Overview of Grammar}{section*.74}% 36
+\BOOKMARK [2][-]{section*.78}{Appendix 2: Complete Overview of Operational Semantics}{section*.74}% 37
+\BOOKMARK [2][-]{section*.82}{Appendix 3: Complete Overview of Typing Rules}{section*.74}% 38
+\BOOKMARK [2][-]{section*.86}{Appendix 4: Complete Overview of Compile Errors}{section*.74}% 39
+\BOOKMARK [2][-]{section*.88}{Appendix 5: Complete Overview of Instruction List}{section*.74}% 40
+\BOOKMARK [2][-]{section*.90}{Appendix 6: Complete operator list}{section*.74}% 41
+\BOOKMARK [2][-]{section*.92}{Appendix 7: Complete keyword list}{section*.74}% 42

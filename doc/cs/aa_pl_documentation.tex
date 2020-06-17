@@ -66,7 +66,6 @@
 \date{}
 
 % Page styling
-\pagestyle{fancyplain}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \rfoot{Page \thepage \hspace{1pt} of \pageref{LastPage}}
@@ -93,11 +92,12 @@
 \newcommand{\glit}[1]{\texttt{#1}}
 
 \begin{document}
+\pagestyle{empty}
 \maketitle
 \tableofcontents
-\thispagestyle{empty}
-\newpage
+\pagestyle{empty}
 \clearpage
+\pagestyle{fancyplain}
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \newsection{Abstract}
@@ -190,7 +190,11 @@ After the initial lexical run, the second pass starts. Here tokens that can be m
 All registered identifiers are matched against the \hyperref[sec:Keywords]{\textsf{keywordlist}}. If a match is found with any word from the above, the identifier token is "upgraded" to be a keyword token. Some keywords may be contextualised, meaning their given meaning may only apply if in the correct context. This is not decided by the lexical analysis but either by the lexical to parse tree conversion or by the parse tree formalizer (third pass of the parse tree creation algorithm).
 \newpage
 \newsubsection{Parse tree (PT)}
-Creating the parse tree is done using a three pass algorithm. The first pass takes the result of the lexical analysis as input. It then converts the result into an array (\textsf{std::vector}) with a tree node representation of the result. This will create a flattened tree - no parents or children set. It's also here the parser determines if a token of type \texttt{OP} is a binary or a unary operation.
+Creating the parse tree is done using a three pass process, where the lexical analysis is converted into a proper parse tree with all the important data preserved. Meaning no data is lost during this translation from a flat array into a tree structure. Additionally, the tree nodes may contain tags, where some data may be saved for later use in the compilation process.
+\\\\
+The root of the parse tree will always be of the type \textsf{Compile Unit}. Which is how a program will be able to have more than one top level node (as all top level nodes are added as children to the compile unit before returning the result of the operation. This node type is also what makes it possible to compile projects including more than one file.
+\newsubsubsection{First Pass}
+The first pass takes the result of the lexical analysis as input. It then converts the result into an array (\textsf{std::vector}) with a tree node representation of the result. This will create a flattened tree - no parents or children set. It's also here the parser determines if a token of type \texttt{OP} is a binary or a unary operation.
 \\\\
 The lexical token type \texttt{OP} is by default designated as a pre-unary operator, unless any literal type, end parenthesis, end index (\texttt{]}), or an identifier token is preceding it. Then it will be treated as a binary operator. If such is not the case, the operator is then treated as a pre-unary operator. Only if an identifier follows an operator (\texttt{++} and \texttt{--}) and the previous does not hold will it be defined as a post-unary operator. The partial BNF grammar for parsing this syntax would be:
 \begin{grammar}
@@ -222,28 +226,31 @@ From the above it's not fully clear, however, post-unary operators have higher p
 }
 \end{lstlisting}
 The above code will be rejected by the parser in the very first pass. The compiler will cite \textit{"'\texttt{--}' cannot be used as a binary operator"} as the reason it will not compile the above. Additionally, it should be made clear that increment and decrement operators may only operate on variables, given their \hyperref[sec:IncDecOp]{\textsf{specific behaviour}}.
-\\\\
+\newpage
+\newsubsubsection{Second Pass}
 Following this token operation, the tree is unflattened. Meaning several of the syntax rules are now applied. More specifically, arithmetic, unary, assignment, groupings, and other types of bindings are applied. Meaning we here start forming the actual parse tree, such that the third pass can begin converting parts of the tree into specific node types. Which in turn will make it easier to translate into an abstract syntax tree and from there run more advanced analyses of the input - to determine the correctness of the program. No syntax errors are detected in the second pass - meaning the potential syntax errors are left to the third and final pass.
 \\\\
 By default this pass will attempt to find certain keywords, operators, or other patterns and create sub-expressions from this - where these sub expressions are added as children to the tree node that triggered the operation. Note, this is not where binary and unary operations (and the like) are formed. This pass is however, the pass where it's determined if something is a parameter list (for a function call or function declaration) or if it's an enclosed expression.
-\newpage
-The second pass follows a strict hierarchy when applying precedence rules. Which can be seen below:
+\\\\
+The second pass follows a strict hierarchy when applying precedence rules. Which can be seen in the table below:
  \begin{table}[H]
 	\centering
-	\begin{tabular}{|l|c|c|l|}
+	\begin{tabular}{|l|c|p{8cm}|}
 	\hline
-	Priority & Name & Symbols & {\centering Description and Examples}  \\ \hline
-	1 & Blocks & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
-	2 & Expressions & \texttt{(, )} & Expressions, code captured between a set of parentheses \\ \hline
-	3 & Indexers & \texttt{[, ]} & Indexing - or subscripting - on some identifier \\ \hline
-	4 & Member Access & \texttt{::, .} & Left-to-right associative member access (\texttt{x.y} and \texttt{x::y}) \\ \hline
-	5 & Unary operators & \texttt{!, \#, -, --, ++} & Examples: \texttt{!x}, \texttt{\#x}, \texttt{-x}, \texttt{--x}, \texttt{++x}, \texttt{x--}, \texttt{x++} \\ \hline
-	6 & b & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
-	7 &  & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
-	8 &  & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
-	9 &  & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	Priority & Symbols & {\centering Description and Examples}  \\ \hline
+	1 & \texttt{\{, \}} & Code blocks - for sequences of connected statements \\ \hline
+	2 & \texttt{(, )} & Expressions, code captured between a set of parentheses: \texttt{(x), (-x), (x,y)}. \\ \hline
+	3 & \texttt{[, ]} & Indexing - or subscripting - on some identifier: \texttt{x[], x[y]} \\ \hline
+	4 & \texttt{::, .} & Left-to-right associative member access (\texttt{x.y, x::y}) \\ \hline
+	5 & \texttt{!, \#, -, --, ++} & Examples: \texttt{!x}, \texttt{\#x}, \texttt{-x}, \texttt{--x}, \texttt{++x}, \texttt{x--}, \texttt{x++} \\ \hline
+	6 & \texttt{*, /, \% } & Multiplication, division and modulo operations. \texttt{x*y, x/y, x\% y} Specifically, \texttt{x+y*z} $\Rightarrow$ \texttt{x+(y*z)}. \\ \hline
+	7 & \texttt{=, /=, *=, +=, -=} & Ensures assignment operations will always be set as root of a subtree representing a binary operation. Meaning: \texttt{x=y*z} $\Rightarrow$ \texttt{((x)=(y*z))} \\ \hline
+	8 & \texttt{match} & Ensure keywords are prioritised correctly. \\ \hline
 	\end{tabular}
 \end{table} \noindent
+Any node types that are not caught in this pass are either part of the sub expression being moved below a node in the tree structure or is a top-level node.
+\newsubsubsection{Third Pass}
+In the third pass, the remaining part of the parsing is done, thus finalising the creation of the parse tree. In this pass binary operations, function calls, declarations and other language features are parsed and it's here where most of the syntax errors will be detected.
 \newpage
 \newsubsection{Abstract Syntax Tree (AST)}
 ...
