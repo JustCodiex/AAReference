@@ -89,7 +89,8 @@
 
 %% Semantic commands
 \newcommand{\envall}{\rho, \phi, \kappa, \sigma \vdash}
-\newcommand{\rspace}{ \ \ \ \ }
+\newcommand{\envallm}[1]{\rho, \phi, \kappa, \sigma #1 \vdash}
+\newcommand{\rspace}{ \ \ \ }
 
 %% Grammar commands
 \newcommand{\gtext}[1]{<$#1$>}
@@ -349,38 +350,191 @@ The semantic rules for basic literals. The rules for evaluating (signed and unsi
 The sets these literals are expected to be a part of are directly relating to the set of values that can be generated using the grammars in \hyperref[sec:ap1]{\textsf{Appendix 1}}. RealLit is equivalent to either FloatLit or DoubleLit, depending on the way the value is declared and how many bits the value is set to use. Meaning we get something along the lines of \texttt{RealLit}$[4\mapsto \texttt{FloatLit}, 8\mapsto \texttt{DoubleLit}]$.
 \newpage
 \newsubsection{Arithmetic Operators}
-The semantic rules for arithmetic operations are defined as:
+To simplify, as before, the full set of integer rules are not shown here. Additionally, the condition of some value being in $\mathbb{R}$ means numbers from $\mathbb{Z}$ are also covered. The semantic rules for arithmetic operations are defined as:
 \begin{figure}[H]
 \centering
 	\begin{mathparpagebreakable}
-		\infer[Rule]
-		{top}
-		{bottom}
+		\infer[Addition]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma '' \rspace v_1,v_2\in\mathbb{R} \rspace v=v_1+v_2, }
+		{\envall e_1 \texttt{+} e_2 \Rightarrow v, \sigma''}
+		\and
+		\infer[Subtraction]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma '' \rspace v_1,v_2\in\mathbb{R} \rspace v=v_1-v_2, }
+		{\envall e_1 \texttt{-} e_2 \Rightarrow v, \sigma''}
+		\and
+		\infer[Multiplication]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma '' \rspace v_1,v_2\in\mathbb{R} \rspace v=v_1*v_2, }
+		{\envall e_1 \texttt{*} e_2 \Rightarrow v, \sigma''}
+		\and
+		\infer[Division]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma '' \rspace v_1,v_2\in\mathbb{R} \rspace v=v_1/v_2, }
+		{\envall e_1 \texttt{/} e_2 \Rightarrow v, \sigma''}
+		\and
+		\infer[Modulo]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma '' \rspace v_1,v_2\in\mathbb{R} \rspace v=v_1\% v_2, }
+		{\envall e_1 \texttt{\%} e_2 \Rightarrow v, \sigma''}
+		\and
+		\infer[NumericalNegation]
+		{\envall e \Rightarrow v, \sigma' \rspace v,\in\mathbb{R} \rspace v'=-v, }
+		{\envall \texttt{-}e \Rightarrow v', \sigma''}
 		\and
 		% other rules here
 		\label{sec:IncDecOp}
 		\infer[Pre-Increment]
-		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v+1 \rspace \rho' = \rho[ x \mapsto v']}
-		{\envall \texttt{++}x\Rightarrow v',\rho'\sigma'}
+		{\envall x \Rightarrow v \rspace v\in\mathbb{R}\rspace v'=v+1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall \texttt{++}x\Rightarrow v',\rho'}
 		\and
 		\infer[Post-Increment]
-		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v+1 \rspace \rho' = \rho[ x \mapsto v']}
-		{\envall x\texttt{++}\Rightarrow v,\rho'\sigma'}
+		{\envall x \Rightarrow v \rspace v\in\mathbb{R}\rspace v'=v+1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall x\texttt{++}\Rightarrow v,\rho'}
 		\and
 		\infer[Pre-Decrement]
-		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v-1 \rspace \rho' = \rho[ x \mapsto v']}
-		{\envall \texttt{--}x\Rightarrow v',\rho'\sigma'}
+		{\envall x \Rightarrow v \rspace v\in\mathbb{R}\rspace v'=v-1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall \texttt{--}x\Rightarrow v',\rho'}
 		\and
 		\infer[Post-Decrement]
-		{\envall x \Rightarrow v, \sigma' \rspace v\in\mathbb{R}\rspace v'=v-1 \rspace \rho' = \rho[ x \mapsto v']}
-		{\envall x\texttt{--}\Rightarrow v,\rho'\sigma'}
+		{\envall x \Rightarrow v \rspace v\in\mathbb{R}\rspace v'=v-1 \rspace \rho' = \rho[ x \mapsto v']}
+		{\envall x\texttt{--}\Rightarrow v,\rho'}
 		\and
 	\end{mathparpagebreakable}
-\end{figure}
+\end{figure} \noindent
+All these semantic rules follow a simple principle of evaluating each expression in sequence and keeping track of a potentially modified heap environment. As seen from the semantic rules regarding increment and decrement operations, it's only possible to execute this operation on variables.
+\newpage
 \newsubsection{Logic Operations}
+The language contains several logic operations that can be invoked. Mainly, we have the following logic relation operations below:
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[EqualsTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1 = v_2 }
+		{\envall e_1 \texttt{==} e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[EqualsFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1 \neq v_2 }
+		{\envall e_1 \texttt{==} e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[NotEqualsTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1 = v_2 }
+		{\envall e_1 \texttt{!=} e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[NotEqualsFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1 \neq v_2 }
+		{\envall e_1 \texttt{!=} e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[LessThanTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R} \rspace v_1 < v_2 }
+		{\envall e_1 \texttt{<} e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[LessThanFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R}\rspace v_1 \geq v_2 }
+		{\envall e_1 \texttt{<} e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[LessThanOrEqualTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R}\rspace v_1 \leq v_2 }
+		{\envall e_1 \texttt{<=} e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[LessThanOrEqualFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R} \rspace v_1 > v_2 }
+		{\envall e_1 \texttt{<=} e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[GreaterThanTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R}\rspace v_1 > v_2 }
+		{\envall e_1 \texttt{>} e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[GreaterThanFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R}\rspace v_1 \leq v_2 }
+		{\envall e_1 \texttt{>} e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[GreaterThanOrEqualTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R} \rspace v_1 \geq v_2 }
+		{\envall e_1 \texttt{>=} e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[GreaterThanOrEqualFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \mathbb{R} \rspace v_1 < v_2 }
+		{\envall e_1 \texttt{>=} e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+The semantic rules are rather trivial and it should be clear what the intention of the rules is. However, it's noteworthy that the equals comparison operations are not as reliant on the type, as the relational operations. 
+\newpage
+\noindent
+The language also supports the logical negation operation, wherein we can convert negative values to positive values and the other way around:
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[BooleanNegation]
+		{\envall e \Rightarrow v, \sigma' \rspace v\in\texttt{BoolLit} \rspace v'=\neg v}
+		{\envall \texttt{!}e \Rightarrow v', \sigma' }
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+Additionally, the language supports the logical $\lor$ ($|$) and $\land$ (\&) operations. Where we, as with comparison operators, have a true and false case for each operation:
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[LogicalAndTrue]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \texttt{BoolLit} \rspace v_1 = \texttt{true} \rspace v_2=v_1}
+		{\envall e_1\texttt{\&}e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[LogicalAndFalse1]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \texttt{BoolLit}  \rspace v_1 = \texttt{false}}
+		{\envall e_1\texttt{\&}e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[LogicalAndFalse2]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \texttt{BoolLit}  \rspace v_2 = \texttt{false}}
+		{\envall e_1\texttt{\&}e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+		\infer[LogicalOrTrue1]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \texttt{BoolLit} \rspace v_1=\texttt{true}}
+		{\envall e_1\texttt{|}e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[LogicalOrTrue2]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \texttt{BoolLit} \rspace v_2=\texttt{true}}
+		{\envall e_1\texttt{|}e_2 \Rightarrow \texttt{true}, \sigma''}
+		\and
+		\infer[LogicalOrFalse]
+		{\envall e_1 \Rightarrow v_1, \sigma' \rspace \envallm{'} e_2 \Rightarrow v_2, \sigma'' \rspace v_1,v_2 \in \texttt{BoolLit}  \rspace v_1 = \texttt{false} \rspace v_1=v_2}
+		{\envall e_1\texttt{|}e_2 \Rightarrow \texttt{false}, \sigma''}
+		\and
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+The lazy variants ($||$ and $\&\&$) of the above operations are also implemented in the language. The semantics for this can be found in \hyperref[sec:ap2]{\textsf{Appendix 2}}.
+\newpage
 \newsubsection{Functional Operations}
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}\noindent
 \newsubsection{Declarative Operations}
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+\newsubsection{Class Specific Operations}
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}\noindent
 \newsubsection{Flow Control Operations}
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[Rule]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}\noindent
 \newpage
 \newsection{Internals of the Virtual Machine}
 ...

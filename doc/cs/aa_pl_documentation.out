@@ -23,24 +23,25 @@
 \BOOKMARK [2][-]{section*.50}{Literals}{section*.45}% 23
 \BOOKMARK [2][-]{section*.53}{Arithmetic Operators}{section*.45}% 24
 \BOOKMARK [2][-]{section*.56}{Logic Operations}{section*.45}% 25
-\BOOKMARK [2][-]{section*.58}{Functional Operations}{section*.45}% 26
-\BOOKMARK [2][-]{section*.60}{Declarative Operations}{section*.45}% 27
-\BOOKMARK [2][-]{section*.62}{Flow Control Operations}{section*.45}% 28
-\BOOKMARK [1][-]{section*.64}{Internals of the Virtual Machine}{}% 29
-\BOOKMARK [2][-]{section*.66}{Executing bytecode}{section*.64}% 30
-\BOOKMARK [2][-]{section*.68}{The operand and call stacks}{section*.64}% 31
-\BOOKMARK [2][-]{section*.70}{The Ref Value Environment}{section*.64}% 32
-\BOOKMARK [2][-]{section*.72}{The Garbage Collector}{section*.64}% 33
-\BOOKMARK [1][-]{section*.74}{Compiler}{}% 34
-\BOOKMARK [2][-]{section*.76}{Compiling the AST}{section*.74}% 35
-\BOOKMARK [3][-]{section*.78}{AST to Bytecode Flowchart}{section*.76}% 36
-\BOOKMARK [2][-]{section*.81}{Verifying \305 Bytecode}{section*.74}% 37
-\BOOKMARK [1][-]{section*.83}{Structure of an \305-binary file}{}% 38
-\BOOKMARK [1][-]{section*.85}{Appendix}{}% 39
-\BOOKMARK [2][-]{section*.87}{Appendix 1: Complete Overview of Grammar}{section*.85}% 40
-\BOOKMARK [2][-]{section*.89}{Appendix 2: Complete Overview of Operational Semantics}{section*.85}% 41
-\BOOKMARK [2][-]{section*.93}{Appendix 3: Complete Overview of Typing Rules}{section*.85}% 42
-\BOOKMARK [2][-]{section*.97}{Appendix 4: Complete Overview of Compile Errors}{section*.85}% 43
-\BOOKMARK [2][-]{section*.99}{Appendix 5: Complete Overview of Instruction List}{section*.85}% 44
-\BOOKMARK [2][-]{section*.101}{Appendix 6: Complete operator list}{section*.85}% 45
-\BOOKMARK [2][-]{section*.103}{Appendix 7: Complete keyword list}{section*.85}% 46
+\BOOKMARK [2][-]{section*.61}{Functional Operations}{section*.45}% 26
+\BOOKMARK [2][-]{section*.64}{Declarative Operations}{section*.45}% 27
+\BOOKMARK [2][-]{section*.67}{Class Specific Operations}{section*.45}% 28
+\BOOKMARK [2][-]{section*.70}{Flow Control Operations}{section*.45}% 29
+\BOOKMARK [1][-]{section*.73}{Internals of the Virtual Machine}{}% 30
+\BOOKMARK [2][-]{section*.75}{Executing bytecode}{section*.73}% 31
+\BOOKMARK [2][-]{section*.77}{The operand and call stacks}{section*.73}% 32
+\BOOKMARK [2][-]{section*.79}{The Ref Value Environment}{section*.73}% 33
+\BOOKMARK [2][-]{section*.81}{The Garbage Collector}{section*.73}% 34
+\BOOKMARK [1][-]{section*.83}{Compiler}{}% 35
+\BOOKMARK [2][-]{section*.85}{Compiling the AST}{section*.83}% 36
+\BOOKMARK [3][-]{section*.87}{AST to Bytecode Flowchart}{section*.85}% 37
+\BOOKMARK [2][-]{section*.90}{Verifying \305 Bytecode}{section*.83}% 38
+\BOOKMARK [1][-]{section*.92}{Structure of an \305-binary file}{}% 39
+\BOOKMARK [1][-]{section*.94}{Appendix}{}% 40
+\BOOKMARK [2][-]{section*.96}{Appendix 1: Complete Overview of Grammar}{section*.94}% 41
+\BOOKMARK [2][-]{section*.98}{Appendix 2: Complete Overview of Operational Semantics}{section*.94}% 42
+\BOOKMARK [2][-]{section*.102}{Appendix 3: Complete Overview of Typing Rules}{section*.94}% 43
+\BOOKMARK [2][-]{section*.106}{Appendix 4: Complete Overview of Compile Errors}{section*.94}% 44
+\BOOKMARK [2][-]{section*.108}{Appendix 5: Complete Overview of Instruction List}{section*.94}% 45
+\BOOKMARK [2][-]{section*.110}{Appendix 6: Complete operator list}{section*.94}% 46
+\BOOKMARK [2][-]{section*.112}{Appendix 7: Complete keyword list}{section*.94}% 47
