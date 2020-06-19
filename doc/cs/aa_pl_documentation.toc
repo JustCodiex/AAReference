@@ -24,25 +24,26 @@
 \contentsline {subsection}{Literals}{9}{section*.50}%
 \contentsline {subsection}{Arithmetic Operators}{10}{section*.53}%
 \contentsline {subsection}{Logic Operations}{11}{section*.56}%
-\contentsline {subsection}{Functional Operations}{13}{section*.61}%
-\contentsline {subsection}{Declarative Operations}{13}{section*.64}%
-\contentsline {subsection}{Class Specific Operations}{13}{section*.67}%
-\contentsline {subsection}{Flow Control Operations}{13}{section*.70}%
-\contentsline {section}{Internals of the Virtual Machine}{14}{section*.73}%
-\contentsline {subsection}{Executing bytecode}{14}{section*.75}%
-\contentsline {subsection}{The operand and call stacks}{14}{section*.77}%
-\contentsline {subsection}{The Ref Value Environment}{14}{section*.79}%
-\contentsline {subsection}{The Garbage Collector}{14}{section*.81}%
-\contentsline {section}{Compiler}{15}{section*.83}%
-\contentsline {subsection}{Compiling the AST}{15}{section*.85}%
-\contentsline {subsubsection}{\centering AST to Bytecode Flowchart}{16}{section*.87}%
-\contentsline {subsection}{Verifying Å Bytecode}{17}{section*.90}%
-\contentsline {section}{Structure of an Å-binary file}{18}{section*.92}%
-\contentsline {section}{Appendix}{19}{section*.94}%
-\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{19}{section*.96}%
-\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{21}{section*.98}%
-\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{22}{section*.102}%
-\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{23}{section*.106}%
-\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{24}{section*.108}%
-\contentsline {subsection}{Appendix 6: Complete operator list}{26}{section*.110}%
-\contentsline {subsection}{Appendix 7: Complete keyword list}{27}{section*.112}%
+\contentsline {subsection}{Declarative Operations}{13}{section*.61}%
+\contentsline {subsection}{Functional Operations}{13}{section*.65}%
+\contentsline {subsection}{Class Specific Operations}{13}{section*.68}%
+\contentsline {subsection}{Enum Specific Operations}{14}{section*.71}%
+\contentsline {subsection}{Flow Control Operations}{15}{section*.74}%
+\contentsline {section}{Internals of the Virtual Machine}{16}{section*.77}%
+\contentsline {subsection}{Executing bytecode}{16}{section*.79}%
+\contentsline {subsection}{The operand and call stacks}{16}{section*.81}%
+\contentsline {subsection}{The Ref Value Environment}{16}{section*.83}%
+\contentsline {subsection}{The Garbage Collector}{16}{section*.85}%
+\contentsline {section}{Compiler}{17}{section*.87}%
+\contentsline {subsection}{Compiling the AST}{17}{section*.89}%
+\contentsline {subsubsection}{\centering AST to Bytecode Flowchart}{18}{section*.91}%
+\contentsline {subsection}{Verifying Å Bytecode}{19}{section*.94}%
+\contentsline {section}{Structure of an Å-binary file}{20}{section*.96}%
+\contentsline {section}{Appendix}{21}{section*.98}%
+\contentsline {subsection}{Appendix 1: Complete Overview of Grammar}{21}{section*.100}%
+\contentsline {subsection}{Appendix 2: Complete Overview of Operational Semantics}{23}{section*.102}%
+\contentsline {subsection}{Appendix 3: Complete Overview of Typing Rules}{24}{section*.106}%
+\contentsline {subsection}{Appendix 4: Complete Overview of Compile Errors}{25}{section*.110}%
+\contentsline {subsection}{Appendix 5: Complete Overview of Instruction List}{26}{section*.112}%
+\contentsline {subsection}{Appendix 6: Complete operator list}{28}{section*.114}%
+\contentsline {subsection}{Appendix 7: Complete keyword list}{29}{section*.116}%

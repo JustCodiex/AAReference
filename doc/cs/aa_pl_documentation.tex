@@ -88,8 +88,8 @@
 }
 
 %% Semantic commands
-\newcommand{\envall}{\rho, \phi, \kappa, \sigma \vdash}
-\newcommand{\envallm}[1]{\rho, \phi, \kappa, \sigma #1 \vdash}
+\newcommand{\envall}{\rho, \mu, \phi, \kappa, \sigma \vdash}
+\newcommand{\envallm}[1]{\rho, \mu, \phi, \kappa, \sigma #1 \vdash}
 \newcommand{\rspace}{ \ \ \ }
 
 %% Grammar commands
@@ -285,7 +285,7 @@ In the third pass, the remaining part of the parsing is done, thus finalising th
 ...
 \newpage
 \newsection{Evaluation of Code}
-In this section, the semantic rules of Å are introduced in the form of inference rules. These work in the same way as introduced in the type rule system. When evaluating code, that is, what will happen when a piece of code is about to be executed, we have four environments to consider. The variable environment, denoted as $\rho$; The first-order function environment, denoted with $\phi$; The class environment - the environment containing valid classes, symbolised by $\kappa$, and finally, the heap environment, denoted with $\sigma$ and will contain instances of elements in $\kappa$.
+In this section, the semantic rules of Å are introduced in the form of inference rules. These work in the same way as introduced in the type rule system. When evaluating code, that is, what will happen when a piece of code is about to be executed, we have four environments to consider. The variable environment, denoted as $\rho$; Variables also defined as constant will also be part of the constant environment, denoted with $\mu$; The first-order function environment, denoted with $\phi$; The class environment - the environment containing valid classes, symbolised by $\kappa$, and finally, the heap environment, denoted with $\sigma$ and will contain instances of elements in $\kappa$.
 \\\\
 Only some of the semantic rules are explained as it should be clear what the intention of a given semantic rule is. However, some rules may require some explaining or comments to how or why the rule is as it is.
 \newsubsection{Environment Operators}
@@ -499,16 +499,64 @@ Additionally, the language supports the logical $\lor$ ($|$) and $\land$ (\&) op
 \end{figure}\noindent
 The lazy variants ($||$ and $\&\&$) of the above operations are also implemented in the language. The semantics for this can be found in \hyperref[sec:ap2]{\textsf{Appendix 2}}.
 \newpage
-\newsubsection{Functional Operations}
+\newsubsection{Declarative Operations}
+Å uses static declaration. That means a static declaration of a type or function is done statically at compile time. The exception to this being lambda/anonymous functions. Simple variable declarations can be defined as below:
 \begin{figure}[H]
 	\centering
 	\begin{mathparpagebreakable}
-		\infer[Rule]
-		{top}
-		{bottom}
+		\infer[ConstVariableVarDecl]
+		{\envall e \Rightarrow v, \sigma' \rspace \rho' = \rho[x \mapsto v] \rspace \mu' = \mu \cup \{x\} }
+		{\envall \texttt{const var } x \texttt{ = } e \Rightarrow \rho', \mu', \phi, \kappa, \sigma'}
+		\and
+		\infer[ConstVariableTypeDecl]
+		{\envall e \Rightarrow v, \sigma' \rspace \rho' = \rho[x \mapsto v] \rspace \mu' = \mu \cup \{x\} \rspace \kappa \vdash v : t}
+		{\envall \texttt{const} \ t \ x \texttt{ = } e \Rightarrow \rho', \mu', \phi, \kappa, \sigma'}
+		\and
+		\infer[VariableDecl]
+		{\envall e \Rightarrow v, \sigma' \rspace \rho' = \rho[x \mapsto v]}
+		{\envall \texttt{var } x \texttt{ = } e \Rightarrow \rho', \phi, \kappa, \sigma'}
+		\and
+		\infer[VariableTypeDecl]
+		{\envall e \Rightarrow v, \sigma' \rspace \rho' = \rho[x \mapsto v] \rspace \kappa \vdash v : t}
+		{\envall t \ x \texttt{ = } e \Rightarrow \rho', \phi, \kappa, \sigma'}
+		\and
 	\end{mathparpagebreakable}
 \end{figure}\noindent
-\newsubsection{Declarative Operations}
+Most notably of the above is $\mu$ being expanded only when variables are declared with the \texttt{const} keyword. The denotion $v:t$ means 'v' has type 't'.
+\\\\
+The language supports a couple of different methods of declaring classes. Additionally, it supports different kinds of classes. A member of the $\kappa$ environment is of the following six-tuple format: 
+$$(T, \{b_1,...,b_i\}, \{m_1,...,m_j\}, \{t_1,...,t_k\}, \{c_1,...,c_h\}, \{e_1,...,e_l\})$$
+Where T is the generic type (T=$\epsilon$ is no generic type). And the first set is the set of class members (the body). The second set contains modifiers. Third set contains all tagged fields and the fourth set contains all constructors. Finally, the fifth set contains the classes being extended or implemented. The semantic rules for declaring classes is the following:
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
+		\infer[ClassDecl]
+		{ \kappa' = \kappa[c\mapsto(\epsilon, \{b_1;...;b_i\}, \{m_1 ... m_j\}, \{\}, \{\}, \{\})]}
+		{\envall m_1 ... m_j \ \texttt{class} \ c \ \{ b_1;...b_i; \}) \Rightarrow \rho, \mu, \phi, \kappa', \sigma}
+		\and
+		\infer[ClassWithExtensionDecl]
+		{ \kappa' = \kappa[c\mapsto(\epsilon, \{b_1;...;b_i\}, \{m_1 ... m_j\}, \{\}, \{\}, \{\})]}
+		{\envall m_1 ... m_j \ \texttt{class} \ c \ \{ b_1;...b_i; \}) \Rightarrow \rho, \mu, \phi, \kappa', \sigma}
+		\and
+		\infer[ClassWithCtorDecl]
+		{}
+		{\envall \Rightarrow \rho, \mu, \phi, \kappa', \sigma}
+		\and
+		\infer[ClassWithCtorAndExtensionsDecl]
+		{}
+		{\envall \Rightarrow \rho, \mu, \phi, \kappa', \sigma}
+		\and
+		\infer[TaggedClassWithExtensionsDecl]
+		{}
+		{\envall \Rightarrow \rho, \mu, \phi, \kappa', \sigma}
+		\and
+		\infer[TaggedClassDecl]
+		{}
+		{\envall \Rightarrow \rho, \mu, \phi, \kappa', \sigma}
+		\and
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+\newsubsection{Functional Operations}
 \begin{figure}[H]
 	\centering
 	\begin{mathparpagebreakable}
@@ -521,12 +569,31 @@ The lazy variants ($||$ and $\&\&$) of the above operations are also implemented
 \begin{figure}[H]
 	\centering
 	\begin{mathparpagebreakable}
+		\infer[NewInstance]
+		{top}
+		{bottom}
+		\and
+		\infer[InstanceMemberLookup]
+		{top}
+		{bottom}
+		\and
+		\infer[MemberMethodInvokation]
+		{top}
+		{bottom}
+	\end{mathparpagebreakable}
+\end{figure}\noindent
+\newsubsection{Enum Specific Operations}
+\begin{figure}[H]
+	\centering
+	\begin{mathparpagebreakable}
 		\infer[Rule]
 		{top}
 		{bottom}
 	\end{mathparpagebreakable}
 \end{figure}\noindent
+\newpage
 \newsubsection{Flow Control Operations}
+When evaluating flow control we have several cases to consider. The ordinary if-then, for-loop, while-loop and such. Additionally, we also consider block "expressions" here. This, therefore, also acts as an extension of the declaration rules.
 \begin{figure}[H]
 	\centering
 	\begin{mathparpagebreakable}
